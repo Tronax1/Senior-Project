@@ -8,7 +8,7 @@ Todo:
     ☐ Configure the API routes to communicate with the front end
   User Login Page:
     For the user login page
-    ☐ Setup the UI for the login page
+    ✔ Setup the UI for the login page @started(19-09-16 16:03) @done(19-09-16 16:41) @lasted(38m28s)
     ☐ Configure the Authentication
     In case we need a way to create users
     ☐ Create a signup page

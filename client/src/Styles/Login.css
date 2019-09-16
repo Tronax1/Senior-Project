@@ -1,0 +1,34 @@
+.Login-Form{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+    padding: 7%;
+    background-color: #c1292e;
+    border-radius: 7px;
+    box-shadow: 15px 15px #02010080;
+}
+.Login-Form input{
+    margin-top: 10px;
+    height: 6vh;
+    font-size: 120%;
+    text-align: center;
+    border-radius: 6px;
+}
+.Login-Form h1{
+    text-align: center;
+}
+.Submit-btn{
+    background-color: #f1d302;
+    border-style: none;
+    transition-duration: 0.3s;
+}
+.Submit-btn:hover{
+    background-color: #fdfffc;
+}
+body{
+    background-color: #fdfffc;
+}
