@@ -1,0 +1,19 @@
+
+Todo:
+  ☐ Setup the backend server for our application
+  ☐ Design the UI for the Likert scale
+  ☐ User Login Page
+  Backend Server:
+    ☐ Setup the database
+    ☐ Configure the API routes to communicate with the front end
+  User Login Page:
+    For the user login page
+    ☐ Setup the UI for the login page
+    ☐ Configure the Authentication
+    In case we need a way to create users
+    ☐ Create a signup page
+  Ticket Object:
+    ☐ Implement all the input fields for the ticket
+    ☐ Design the UI to be displayed for the tickets
+  Archive:
+
