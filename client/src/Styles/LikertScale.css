@@ -1,0 +1,28 @@
+.Likert-Scale{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 20vh;
+    display: flex;
+    flex-direction: row;
+}
+.Likert-Scale label{
+    margin-left: 2vw;
+}
+.Likert-Submit{
+    margin-left: 1vw;
+    background-color: green;
+    border-style: none;
+    color: white;
+    border-radius: 7px;
+    height: 5vh;
+    width: 10vw;
+    font-size: 1rem;
+    transition-duration: 0.3s;
+    margin-top: 4vh;
+}
+.Likert-Submit:hover{
+    background-color: rgb(145, 255, 0);
+    color: black;
+}

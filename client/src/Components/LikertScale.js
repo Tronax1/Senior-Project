@@ -1,21 +1,46 @@
 import React, { Component } from 'react'
+import '../Styles/LikertScale.css'
 
 export default class LikertScale extends Component {
+    constructor(props){
+        super(props);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        this.state = {
+            Scale: ''
+        }
+    }
+    handleChange(e){
+        this.setState({
+            Scale: e.target.value
+        })
+    }
+    handleSubmit(e){
+        e.preventDefault();
+        let finalScale = this.state.Scale;
+        console.log(finalScale);
+    }
     render() {
         return (
             <div>
-                <form>
-                    <label for="Lowest">Lowest</label>
-                    <label for="Lower">Lower</label>
-                    <label for="Low">Low</label>
-                    <label for="Medium">Medium</label>
-                    <label for="High">High</label>
-                    <input name="Scale" type="radio" value="Lowest"/>
-                    <input name="Scale" type="radio" value="Lower"/>
-                    <input name="Scale" type="radio" value="Low"/>
-                    <input name="Scale" type="radio" value="Medium"/>
-                    <input name="Scale" type="radio" value="High"/>
-                    <input type="submit" value="Submit"/>
+                <form className="Likert-Scale" onSubmit={this.handleSubmit}>
+                    <label>
+                        <p>Not at all similar</p>
+                        <input onChange={this.handleChange} name="Scale" id="Lowest" type="radio" value="Not at all similar"/>
+                    </label>
+                    <label>
+                        <p>Somewhat similar</p>
+                        <input onChange={this.handleChange} name="Scale" id="Lower" type="radio" value="Somewhat similar"/>
+                    </label>
+                    <label>
+                        <p>Very similar</p>
+                        <input onChange={this.handleChange} name="Scale" id="Low" type="radio" value="Very similar"/>
+                    </label>
+                    <label>
+                        <p>Nearly identical</p>
+                        <input onChange={this.handleChange} name="Scale" id="Medium" type="radio" value="Nearly identical"/>
+                    </label>
+                    <input className="Likert-Submit" type="submit" value="Submit"/>
                 </form>
             </div>
         )
