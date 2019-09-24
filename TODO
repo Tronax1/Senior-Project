@@ -4,7 +4,7 @@ Todo:
   ✔ Design the UI for the Likert scale @started(19-09-17 14:53) @done(19-09-17 19:51) @lasted(4h58m47s)
   ☐ User Login Page
   Backend Server:
-    ☐ Setup the database
+    ✔ Setup the database @started(19-09-24 16:33) @done(19-09-24 16:55) @lasted(22m24s)
     ☐ Configure the API routes to communicate with the front end
   User Login Page:
     For the user login page
