@@ -1,0 +1,9 @@
+.Ticket{
+    border-style: solid;
+    display: flex;
+    flex-direction: column;
+    width: 25vw;
+}
+.Ticket div{
+    border-bottom: 1px rgba(0,0,0,0.3) solid;
+}
