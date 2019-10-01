@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Tables from './Tables'
+import {Redirect} from 'react-router-dom'
 
 export default class TableCheckbox extends Component {
     constructor(props){
@@ -10,17 +11,16 @@ export default class TableCheckbox extends Component {
     }
     handleChange(e){
         this.setState({
-            [e.target.name]: e.target.value
+            [e.target.name]: true
         })
     }
     handleSubmit(e){
-        e.preventDefault();
+        //e.preventDefault();
         const selectedTables = this.state;
-        console.log(selectedTables);
     }
 
     render() {
-        console.log(this.state)
+        //console.log(this.state)
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
