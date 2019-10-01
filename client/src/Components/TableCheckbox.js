@@ -11,6 +11,8 @@ export default class TableCheckbox extends Component {
         return (
             <div>
                 <form>
+                    <input type="checkbox" id="OID" name="OID" value={true}/>
+                    <label for="OID">OID</label>
                 </form>
             </div>
         )
