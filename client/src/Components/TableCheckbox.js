@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Tables from './Tables'
+import tableNames from './tableNames'
 import {withRouter} from 'react-router-dom'
 import { connect } from 'react-redux'
 import { getTables } from '../actions'
@@ -24,10 +25,18 @@ class TableCheckbox extends Component {
     }
 
     render() {
-        //console.log(this.state)
+        const allTheTables = tableNames;
+        const renderTables = allTheTables.map(names=>(
+            <>
+                <input type="checkbox" id={names} name={names} value={true} onChange={this.handleChange}/>
+                <label for={names}>{names}</label>
+            </>
+        ))
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
+                    {renderTables}
+                    {/*
                     <input type="checkbox" id="OID" name="OID" value={true} onChange={this.handleChange}/>
                     <label for="OID">OID</label>
 
@@ -76,6 +85,33 @@ class TableCheckbox extends Component {
                     <input type="checkbox" id="CurrentApprovalSequence" name="CurrentApprovalSequence" value={true} onChange={this.handleChange}/>
                     <label for="CurrentApprovalSequence">CurrentApprovalSequence</label>
 
+                    <input type="checkbox" id="CurrentState" name="CurrentState" value={true} onChange={this.handleChange}/>
+                    <label for="CurrentState">CurrentState</label>
+
+                    <input type="checkbox" id="VIP" name="VIP" value={true} onChange={this.handleChange}/>
+                    <label for="VIP">VIP</label>
+
+                    <input type="checkbox" id="ClosedDateTime" name="ClosedDateTime" value={true} onChange={this.handleChange}/>
+                    <label for="ClosedDateTime">ClosedDateTime</label>
+
+                    <input type="checkbox" id="Status" name="Status" value={true} onChange={this.handleChange}/>
+                    <label for="Status">Status</label>
+
+                    <input type="checkbox" id="Workflow" name="Workflow" value={true} onChange={this.handleChange}/>
+                    <label for="Workflow">Workflow</label>
+
+                    <input type="checkbox" id="BusinessHoursToApply" name="BusinessHoursToApply" value={true} onChange={this.handleChange}/>
+                    <label for="BusinessHoursToApply">BusinessHoursToApply</label>
+
+                    <input type="checkbox" id="Sentiment" name="Sentiment" value={true} onChange={this.handleChange}/>
+                    <label for="Sentiment">Sentiment</label>
+
+                    <input type="checkbox" id="ActiveTaskOrder" name="ActiveTaskOrder" value={true} onChange={this.handleChange}/>
+                    <label for="ActiveTaskOrder">ActiveTaskOrder</label>
+
+                    <input type="checkbox" id="EmailThreadID" name="EmailThreadID" value={true} onChange={this.handleChange}/>
+                    <label for="EmailThreadID">EmailThreadID</label>
+                    */}
                     <input type="submit" value="Submit"/>
                 </form>
             </div>
