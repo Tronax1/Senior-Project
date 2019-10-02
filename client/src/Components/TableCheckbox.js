@@ -5,6 +5,15 @@ import {withRouter} from 'react-router-dom'
 import { connect } from 'react-redux'
 import { getTables } from '../actions'
 
+function Checkbox(props){
+    return(
+        <>
+            <input  type="checkbox" id={props.name} name={props.name} value={true} onChange={props.Change}/>
+            <label htmlFor={props.name}>{props.name}</label>
+        </>
+    );
+}
+
 class TableCheckbox extends Component {
     constructor(props){
         super(props);
@@ -23,14 +32,11 @@ class TableCheckbox extends Component {
         this.props.getTables(selectedTables);
         this.props.history.push("Tickets");
     }
-
+    
     render() {
         const allTheTables = tableNames;
-        const renderTables = allTheTables.map(names=>(
-            <>
-                <input type="checkbox" id={names} name={names} value={true} onChange={this.handleChange}/>
-                <label for={names}>{names}</label>
-            </>
+        const renderTables = allTheTables.map((names, i)=>(
+            <Checkbox key={i} name={names} Change={this.handleChange}/>
         ))
         return (
             <div>
@@ -42,4 +48,5 @@ class TableCheckbox extends Component {
         )
     }
 }
+
 export default withRouter(connect(null, {getTables})(TableCheckbox));
