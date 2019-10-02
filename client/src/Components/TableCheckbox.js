@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import Tables from './Tables'
-import {Redirect} from 'react-router-dom'
+import { connect } from 'react-redux'
+import { getTables } from '../actions'
 
-export default class TableCheckbox extends Component {
+class TableCheckbox extends Component {
     constructor(props){
         super(props);
         this.handleChange = this.handleChange.bind(this);
@@ -15,8 +16,9 @@ export default class TableCheckbox extends Component {
         })
     }
     handleSubmit(e){
-        //e.preventDefault();
+        e.preventDefault();
         const selectedTables = this.state;
+        this.props.getTables(selectedTables);
     }
 
     render() {
@@ -78,3 +80,4 @@ export default class TableCheckbox extends Component {
         )
     }
 }
+export default connect(null, {getTables})(TableCheckbox);
