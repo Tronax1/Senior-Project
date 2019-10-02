@@ -3,6 +3,7 @@ Todo:
   ☐ Setup the backend server for our application
   ✔ Design the UI for the Likert scale @started(19-09-17 14:53) @done(19-09-17 19:51) @lasted(4h58m47s)
   ☐ User Login Page
+  ✔ Convert csv file to json @done(19-10-02 12:02)
   CheckBox:
     ✔ Implement all the table options @started(19-10-01 12:49) @done(19-10-01 20:15) @lasted(7h26m5s)
         still need to implement the rest, but the overall structure is done
