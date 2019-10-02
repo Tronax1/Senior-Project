@@ -6,10 +6,12 @@ Todo:
   ✔ Convert csv file to json @done(19-10-02 12:02)
   CheckBox:
     ✔ Implement all the table options @started(19-10-01 12:49) @done(19-10-01 20:15) @lasted(7h26m5s)
-        still need to implement the rest, but the overall structure is done
-    ☐ Store the results in Redux
+    ✔ Store the results in Redux @done(19-10-02 15:49)
+    ☐ Improve the UI
   Backend Server:
     ✔ Setup the database @started(19-09-24 16:33) @done(19-09-24 16:55) @lasted(22m24s)
+    ☐ Make a schema for the database
+    ☐ Store the JSON ticket objects in the database
     ☐ Configure the API routes to communicate with the front end
   User Login Page:
     For the user login page
@@ -18,8 +20,10 @@ Todo:
     In case we need a way to create users
     ☐ Create a signup page
   Ticket Object:
-    ☐ Implement all the input fields for the ticket
-    ☐ Show which columns to show based on checkbox selection
+    ✔ Implement all the input fields for the ticket @done(19-10-02 15:49)
+    ✔ Show which columns to show based on checkbox selection @done(19-10-02 15:49)
     ✔ Design the UI to be displayed for the tickets @started(19-09-19 14:34) @done(19-09-19 14:59) @lasted(25m24s)
+    ☐ Show the data for each ticket field from the database
+    ☐ Improve the UI
   Archive:
 

@@ -7,7 +7,8 @@ export default class TicketPage extends Component {
         return (
             <div>
                 <Ticket/>
-                <LikertScale/>                
+                <LikertScale/>  
+                <Ticket/>              
             </div>
         )
     }
