@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Tables from './Tables'
+import {withRouter} from 'react-router-dom'
 import { connect } from 'react-redux'
 import { getTables } from '../actions'
 
@@ -19,6 +20,7 @@ class TableCheckbox extends Component {
         e.preventDefault();
         const selectedTables = this.state;
         this.props.getTables(selectedTables);
+        this.props.history.push("Tickets");
     }
 
     render() {
@@ -80,4 +82,4 @@ class TableCheckbox extends Component {
         )
     }
 }
-export default connect(null, {getTables})(TableCheckbox);
+export default withRouter(connect(null, {getTables})(TableCheckbox));
