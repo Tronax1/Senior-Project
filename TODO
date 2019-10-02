@@ -4,7 +4,8 @@ Todo:
   ✔ Design the UI for the Likert scale @started(19-09-17 14:53) @done(19-09-17 19:51) @lasted(4h58m47s)
   ☐ User Login Page
   CheckBox:
-    ☐ Implement all the table options @started(19-10-01 12:49)
+    ✔ Implement all the table options @started(19-10-01 12:49) @done(19-10-01 20:15) @lasted(7h26m5s)
+        still need to implement the rest, but the overall structure is done
     ☐ Store the results in Redux
   Backend Server:
     ✔ Setup the database @started(19-09-24 16:33) @done(19-09-24 16:55) @lasted(22m24s)
