@@ -23,7 +23,7 @@ class Login extends Component {
         e.preventDefault();
         const user = this.state.user;
         this.props.getUser(user);
-        this.props.history.push("TableSelection");
+        this.props.history.push("User/TableSelection");
     }
     render() {
         return (

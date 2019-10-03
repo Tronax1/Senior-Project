@@ -5,9 +5,9 @@ export default class NavBar extends Component {
     render() {
         return (
             <div>
-                <NavLink to="/Tickets">Tickets</NavLink>
+                <NavLink to="/User/Tickets">Tickets</NavLink>
                 <NavLink to="/">Login</NavLink>
-                <NavLink to="/TableSelection">Checkbox</NavLink>                
+                <NavLink to="/User/TableSelection">Checkbox</NavLink>                
             </div>
         )
     }
