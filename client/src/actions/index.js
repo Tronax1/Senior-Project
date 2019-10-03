@@ -1,10 +1,16 @@
-import {GET_TABLES} from './types';
+import { GET_TABLES } from './types';
+import { GET_USER } from './types'
 
 export const getTables = (tables) => dispatch =>{
-    let selectedTables = tables;
-    console.log(selectedTables);
     dispatch({
         type: GET_TABLES,
-        payload: selectedTables
+        payload: tables
     })
 }
+export const getUser = (user) => dispatch =>{
+    dispatch({
+        type: GET_USER,
+        payload: user
+    })
+}
+
