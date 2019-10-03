@@ -13,4 +13,10 @@ export const getUser = (user) => dispatch =>{
         payload: user
     })
 }
+export const logOut = () => dispatch =>{
+    dispatch({
+        type: GET_USER,
+        payload: false
+    })
+}
 
