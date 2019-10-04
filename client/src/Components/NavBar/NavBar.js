@@ -8,9 +8,9 @@ import '../../Styles/NavBar.css'
 
 class NavBar extends Component {
     render() {
-        //if(!this.props.user){
-         //   return null;
-       // }
+        if(!this.props.user){
+           return null;
+        }
         return (
             <div className="NavBar">
                 <div className="Nav-Flex">

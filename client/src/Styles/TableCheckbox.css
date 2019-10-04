@@ -1,0 +1,25 @@
+.Form-Position{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 4vh;
+    left: 30vw;
+    width: 20vw;
+}
+.Checkboxes{
+    height: 50vh;
+    overflow: auto;
+}
+.Form-Position input{
+    background: none;
+    border-style: none;
+    background-color: #64f58d;
+    color: black;
+    font-size: 1.5rem;
+    border-radius: 5px;
+    transition-duration: 0.3s;
+    transition-delay: 0.05s;
+}
+.Form-Position input:hover{
+    background-color: #9dfff9;
+}

@@ -5,12 +5,14 @@ import {withRouter} from 'react-router-dom'
 import { connect } from 'react-redux'
 import { getTables } from '../actions'
 
+import '../Styles/TableCheckbox.css'
+
 function Checkbox(props){
     return(
-        <>
+        <div>
             <input  type="checkbox" id={props.name} name={props.name} value={true} onChange={props.Change}/>
             <label htmlFor={props.name}>{props.name}</label>
-        </>
+        </div>
     );
 }
 
@@ -40,8 +42,11 @@ class TableCheckbox extends Component {
         ))
         return (
             <div>
-                <form onSubmit={this.handleSubmit}>
-                    {renderTables}
+                <form className="Form-Position" onSubmit={this.handleSubmit}>
+                    <h2>All Fields</h2>
+                    <div className="Checkboxes">
+                        {renderTables}
+                    </div>
                     <input type="submit" value="Submit"/>
                 </form>
             </div>
