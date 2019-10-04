@@ -4,19 +4,28 @@ import { connect } from 'react-redux'
 import { logOut } from '../../actions'
 import { withRouter } from 'react-router-dom'
 
+import '../../Styles/NavBar.css'
+
 class NavBar extends Component {
     render() {
+        //if(!this.props.user){
+         //   return null;
+       // }
         return (
-            <div>
-                <NavLink to="/User/Tickets">Tickets</NavLink>
-                <NavLink to="/">Login</NavLink>
-                <NavLink to="/User/TableSelection">Checkbox</NavLink>
-                <button onClick={()=>{
-                    this.props.logOut();
-                    this.props.history.push("/");
-                }}>Logout</button>             
+            <div className="NavBar">
+                <div className="Nav-Flex">
+                    <NavLink className="Links" to="/User/Tickets">Tickets</NavLink>
+                    <NavLink className="Links" to="/User/TableSelection">Checkbox</NavLink>
+                    <button onClick={()=>{
+                        this.props.logOut();
+                        this.props.history.push("/");
+                    }}>Logout</button>    
+                </div>         
             </div>
         )
     }
 }
-export default withRouter(connect(null, {logOut})(NavBar));
+function mapStatetoProps({user}){
+    return {user};
+}
+export default withRouter(connect(mapStatetoProps, {logOut})(NavBar));
