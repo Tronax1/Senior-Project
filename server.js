@@ -7,7 +7,7 @@ const app = express();
 
 const mongoDBRoute = process.env.DATA_BASE_ROUTE;
 
-mongoose.connect(mongoDBRoute, { useNewUrlParser: true});
+mongoose.connect(mongoDBRoute, { useNewUrlParser: true, useUnifiedTopology: true});
 
 let db = mongoose.connection;
 
