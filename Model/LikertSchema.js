@@ -6,7 +6,10 @@ const LikertCard = new Schema({
     ID2: String,
     user: String,
     result: String,
-    date: Date
+    date: {
+        type: Date,
+        default: Date.now
+    }
 }, {collection: 'Comparison'});
 
 module.exports = LikertCards = mongoose.model('LikertCard', LikertCard);

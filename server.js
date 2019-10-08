@@ -1,9 +1,12 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 require('dotenv').config();
 const items = require('./routes/api/items');
 
 const app = express();
+
+app.use(bodyParser.json());
 
 const mongoDBRoute = process.env.DATA_BASE_ROUTE;
 
