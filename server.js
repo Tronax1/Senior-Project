@@ -1,7 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
 require('dotenv').config();
-const Ticket = require('./Model/TicketSchema');
+const items = require('./routes/api/items');
+
+const app = express();
 
 const mongoDBRoute = process.env.DATA_BASE_ROUTE;
 
@@ -13,13 +15,8 @@ db.once('open', ()=> console.log('Connected to the database'));
 
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
-getData(Ticket);
-async function getData(Ticket){
-    const data = await Ticket.find({OID: 1});
-    console.log(data);
-}
-const app = express();
+app.use('/api/items', items);
 
-const PORT = 5000;
+const port = 5000 || process.env.PORT;
 
-app.listen(PORT, ()=>{console.log(`Server started running on port: ${PORT}`)});
+app.listen(port, ()=>{console.log(`Server started running on port: ${port}`)});

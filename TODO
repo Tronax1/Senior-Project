@@ -11,8 +11,9 @@ Todo:
     ☐ Improve the UI
   Backend Server:
     ✔ Setup the database @started(19-09-24 16:33) @done(19-09-24 16:55) @lasted(22m24s)
-    ☐ Make a schema for the database
-    ☐ Store the JSON ticket objects in the database
+    ✔ Make a schema for the database @done(19-10-08 13:00)
+    ✔ Store the JSON ticket objects in the database @done(19-10-08 13:00)
+    ☐ Get and store the likert score results in the database
     ☐ Configure the API routes to communicate with the front end
   User Login Page:
     For the user login page
