@@ -16,7 +16,7 @@ to fetch information and store it in a global state. For the back end, we used E
 ## What did we learn?
 We learned how to use MongoDB Atlas in conjunction with a full stack web application. We also learned how to 
 create a REST API that is able to perform CRUD (Create Read Update Delete) operations, and connect everything with a React/Redux front end.
-##Collaborators
+## Collaborators
 [Mathew Kinsey](https://github.com/mathewkinsey)
 [Joshua Pericles](https://github.com/jpericles83)
 [Jorge Villarreal](https://github.com/Tronax1)
