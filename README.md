@@ -11,7 +11,7 @@ to fetch information and store it in a global state. For the back end, we used E
 5. Navigate to the client folder
 6. Type npm install in the terminal and wait for the installation to finish
 7. Navigate back to the root directory
-8 Type npm run dev in the terminal to run the project
+8. Type npm run dev in the terminal to run the project
 **NOTE: You need to create a .env file on the root directory with a custom MongoDB Atlas login.**
 ## What did we learn?
 We learned how to use MongoDB Atlas in conjunction with a full stack web application. We also learned how to 
