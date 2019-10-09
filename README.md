@@ -1,5 +1,5 @@
 # Senior Project
-This is a full stack web application that allows a user to compare ChangeGear ticket information.
+This is a full stack web application that allows a user to compare [ChangeGear](https://www.sunviewsoftware.com/products/service-manager) ticket information.
 ## Approach
 We used React and Redux for the front end. Redux goes well with React in state management that allowed us
 to fetch information and store it in a global state. For the back end, we used Express to handle the database communication, and the creation of a REST API. For the database, we opted in using [MongoDB atlas](https://www.mongodb.com/cloud/atlas).
