@@ -9,6 +9,11 @@ router.get('/', async (req, res) =>{
     res.json(Items);
 });
 
+router.get('/scores', async (req, res) =>{
+    const results = await Result.find();
+    res.json(results);
+})
+
 router.post('/', async (req, res) =>{
     const newResult = new Result({
         ID1: req.body.ID1,
