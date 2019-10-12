@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 
 const mongoDBRoute = process.env.DATA_BASE_ROUTE;
 
-mongoose.connect(mongoDBRoute, { useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(process.env.MONGODB_URI || mongoDBRoute, { useNewUrlParser: true, useUnifiedTopology: true});
 
 let db = mongoose.connection;
 
