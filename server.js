@@ -20,6 +20,17 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 app.use('/api/items', items);
 
+if (process.env.NODE_ENV === 'production') {
+    // Exprees will serve up production assets
+    app.use(express.static('my-app/build'));
+
+    // Express serve up index.html file if it doesn't recognize route
+    const path = require('path');
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'my-app', 'build', 'index.html'));
+    });
+}
+
 const port = 5000 || process.env.PORT;
 
-app.listen(port, ()=>{console.log(`Server started running on port: ${port}`)});
+app.listen(port, '0.0.0.0', ()=>{console.log(`Server started running on port: ${port}`)});
