@@ -4,7 +4,7 @@ import { getUser } from '../actions'
 import { withRouter } from 'react-router-dom'
 import { fetchUser } from '../actions'
 
-import '../Styles/Login.css'
+import '../Styles/Login.scss'
 
 class Login extends Component {
     constructor(props){

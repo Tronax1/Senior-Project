@@ -5,7 +5,7 @@ import { logOut } from '../../actions'
 import { withRouter } from 'react-router-dom'
 import { fetchUser } from '../../actions'
 
-import '../../Styles/NavBar.css'
+import '../../Styles/NavBar.scss'
 
 class NavBar extends Component {
     render() {

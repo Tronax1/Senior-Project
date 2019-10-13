@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import LikertScale from "./LikertScale"
 import Ticket from "./Ticket"
 
-import '../Styles/TicketPage.css'
+import '../Styles/TicketPage.scss'
 
 export default class TicketPage extends Component {
     render() {

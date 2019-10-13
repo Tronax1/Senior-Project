@@ -3,7 +3,7 @@ import TicketField from './TicketField'
 import { connect } from 'react-redux'
 import tableNames from './tableNames'
 
-import '../Styles/Ticket.css'
+import '../Styles/Ticket.scss'
 
 class Ticket extends Component {
     render() {

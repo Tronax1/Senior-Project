@@ -5,7 +5,7 @@ import {withRouter} from 'react-router-dom'
 import { connect } from 'react-redux'
 import { getTables } from '../actions'
 
-import '../Styles/TableCheckbox.css'
+import '../Styles/TableCheckbox.scss'
 
 function Checkbox(props){
     return(

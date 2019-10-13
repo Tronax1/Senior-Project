@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import '../Styles/LikertScale.css'
+import '../Styles/LikertScale.scss'
 
 export default class LikertScale extends Component {
     constructor(props){
