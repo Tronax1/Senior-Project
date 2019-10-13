@@ -5,6 +5,6 @@ export default (state = null, action) =>{
         case GET_TABLES:
             return action.payload
         default:
-            return false;
+            return state;
     }
 }
