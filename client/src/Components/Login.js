@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getUser } from '../actions'
 import { withRouter } from 'react-router-dom'
+import { fetchUser } from '../actions'
 
 import '../Styles/Login.css'
 
@@ -23,6 +24,7 @@ class Login extends Component {
         e.preventDefault();
         const user = this.state.user;
         this.props.getUser(user);
+        this.props.fetchUser();
         this.props.history.push("User/TableSelection");
     }
     render() {
@@ -39,4 +41,5 @@ class Login extends Component {
     }
 }
 
-export default withRouter(connect(null, {getUser})(Login));
+
+export default withRouter(connect(null, {getUser, fetchUser})(Login));

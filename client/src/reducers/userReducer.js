@@ -5,6 +5,6 @@ export default (state = null, action) =>{
         case GET_USER:
             return action.payload
         default:
-            return false;
+            return state;
     }
 }

@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { logOut } from '../../actions'
 import { withRouter } from 'react-router-dom'
+import { fetchUser } from '../../actions'
 
 import '../../Styles/NavBar.css'
 
@@ -18,6 +19,7 @@ class NavBar extends Component {
                     <NavLink className="Links" to="/User/TableSelection">Checkbox</NavLink>
                     <button onClick={()=>{
                         this.props.logOut();
+                        this.props.fetchUser();
                         this.props.history.push("/");
                     }}>Logout</button>    
                 </div>         
@@ -28,4 +30,4 @@ class NavBar extends Component {
 function mapStatetoProps({user}){
     return {user};
 }
-export default withRouter(connect(mapStatetoProps, {logOut})(NavBar));
+export default withRouter(connect(mapStatetoProps, {logOut, fetchUser})(NavBar));
