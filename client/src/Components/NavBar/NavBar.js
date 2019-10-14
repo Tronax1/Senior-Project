@@ -17,6 +17,7 @@ class NavBar extends Component {
                 <div className="Nav-Flex">
                     <NavLink className="Links" to="/User/Tickets">Tickets</NavLink>
                     <NavLink className="Links" to="/User/TableSelection">Checkbox</NavLink>
+                    <NavLink className="Links" to="/User/Results">Comparisons</NavLink>
                     <button onClick={()=>{
                         this.props.logOut();
                         this.props.fetchUser();
