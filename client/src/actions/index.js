@@ -1,5 +1,6 @@
-import { GET_TABLES } from './types';
-import { GET_USER } from './types'
+import { GET_TABLES, GET_USER, GET_RESULTS } from './types';
+import axios from 'axios';
+
 
 const userName = [];
 export const fetchUser = () => dispatch =>{
@@ -23,6 +24,14 @@ export const getTables = (tables) => dispatch =>{
     dispatch({
         type: GET_TABLES,
         payload: tables
+    })
+}
+
+export const fetchResults = async () => dispatch =>{
+    const comparisons = await axios.get('/api/items/scores');
+    dispatch({
+        type: GET_RESULTS,
+        payload: comparisons
     })
 }
 export const getUser = (user) => dispatch =>{
