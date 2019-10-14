@@ -27,7 +27,7 @@ export const getTables = (tables) => dispatch =>{
     })
 }
 
-export const fetchResults = async () => dispatch =>{
+export const fetchResults = () => async dispatch =>{
     const comparisons = await axios.get('/api/items/scores');
     dispatch({
         type: GET_RESULTS,
