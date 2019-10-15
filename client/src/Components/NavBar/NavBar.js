@@ -22,6 +22,7 @@ class NavBar extends Component {
                         this.props.logOut();
                         this.props.fetchUser();
                         this.props.history.push("/");
+                        window.location.reload();
                     }}>Logout</button>    
                 </div>         
             </div>

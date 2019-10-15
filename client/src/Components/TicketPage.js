@@ -18,7 +18,8 @@ class TicketPage extends Component {
             return (
                 <div className="Ticket-Structure">
                     <div>
-                        <LikertScale/>
+                        <LikertScale ticketOne={this.props.tickets.data[0]} 
+                        ticketTwo={this.props.tickets.data[1]}/>
                     </div>   
                     <div className="Ticket-Data">
                         <Ticket ticketData = {this.props.tickets.data[0]}/>

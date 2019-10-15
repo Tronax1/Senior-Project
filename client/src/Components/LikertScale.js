@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { addResult } from '../actions'
 import '../Styles/LikertScale.scss'
 
-export default class LikertScale extends Component {
+class LikertScale extends Component {
     constructor(props){
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -17,8 +19,18 @@ export default class LikertScale extends Component {
     }
     handleSubmit(e){
         e.preventDefault();
-        let finalScale = this.state.Scale;
-        console.log(finalScale);
+        if(this.state.Scale.length === 0){
+            window.prompt('Please select a result');
+        }
+        else{
+            const result = {
+                ID1: this.props.ticketOne.OID,
+                ID2: this.props.ticketTwo.OID,
+                user: this.props.user,
+                result: this.state.Scale
+            }
+            this.props.addResult(result);
+        }
     }
     render() {
         return (
@@ -46,3 +58,7 @@ export default class LikertScale extends Component {
         )
     }
 }
+function mapStatetoProps({user}){
+    return {user};
+}
+export default connect(mapStatetoProps, { addResult })(LikertScale);

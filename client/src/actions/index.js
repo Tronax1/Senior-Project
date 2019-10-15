@@ -41,6 +41,9 @@ export const fetchTickets = () => async dispatch =>{
         payload: tickets
     })
 }
+export const addResult = (item) => async dispatch =>{
+    await axios.post('/api/items', item);
+}
 export const getUser = (user) => dispatch =>{
     userName.push(user);
 }
