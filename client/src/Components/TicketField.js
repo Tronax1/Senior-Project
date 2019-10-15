@@ -8,7 +8,7 @@ export default class TicketField extends Component {
         return (
             <div>
                 <h2>{this.props.title}</h2>
-                <input type="text" value="Dummy" disabled/>
+                <input type="text" value={this.props.datas} disabled/>
             </div>
         )
     }

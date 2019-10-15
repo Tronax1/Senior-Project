@@ -1,5 +1,11 @@
 .Ticket-Structure{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-evenly;
+    position: absolute;
+    left: 25vw;
+}
+.Ticket-Data{
+    display: flex;
+    flex-direction: row;
 }

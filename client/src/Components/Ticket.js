@@ -12,8 +12,9 @@ class Ticket extends Component {
         }
         else{
             const names = tableNames;
+            const ticketData = Object.values(this.props.ticketData);
             const TicketFields = Object.keys(this.props.table).map((item, i) => (
-                <TicketField key={i} show={this.props.table[item]} title={names[i]} />
+                <TicketField key={i} show={this.props.table[item]} title={names[i]} datas={ticketData[i+1]}/>
             ))
             return (
                 <div className="Ticket">
