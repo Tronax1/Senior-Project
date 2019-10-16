@@ -24,8 +24,8 @@ class LikertScale extends Component {
         }
         else{
             const result = {
-                ID1: this.props.ticketOne.OID,
-                ID2: this.props.ticketTwo.OID,
+                ID1: this.props.ticketOne.ItemID,
+                ID2: this.props.ticketTwo.ItemID,
                 user: this.props.user,
                 result: this.state.Scale
             }
