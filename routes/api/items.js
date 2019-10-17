@@ -22,6 +22,11 @@ router.get('/scores', async (req, res) =>{
     res.json(results);
 })
 
+router.get('/total', async (req, res) =>{
+    const count = await Result.countDocuments({user: req.query.user});
+    res.json(count);
+})
+
 router.post('/', async (req, res) =>{
     const newResult = new Result({
         ID1: req.body.ID1,

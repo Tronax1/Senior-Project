@@ -1,4 +1,4 @@
-import { GET_TABLES, GET_USER, GET_RESULTS, GET_TICKETS} from './types';
+import { GET_TABLES, GET_USER, GET_RESULTS, GET_TICKETS, GET_TOTAL_COMPARISONS} from './types';
 import axios from 'axios';
 
 
@@ -43,6 +43,18 @@ export const fetchTickets = () => async dispatch =>{
     dispatch({
         type: GET_TICKETS,
         payload: tickets
+    })
+}
+
+export const fetchAllResults = (user) => async dispatch =>{
+    const count = await axios.get('/api/items/total', {
+        params: {
+            user: user
+        }
+    });
+    dispatch({
+        type: GET_TOTAL_COMPARISONS,
+        payload: count
     })
 }
 export const addResult = (item) => async dispatch =>{

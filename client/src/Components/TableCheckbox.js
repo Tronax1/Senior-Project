@@ -3,7 +3,7 @@ import Tables from './Tables'
 import tableNames from './tableNames'
 import {withRouter} from 'react-router-dom'
 import { connect } from 'react-redux'
-import { getTables, fetchTickets } from '../actions'
+import { getTables, fetchTickets, fetchAllResults } from '../actions'
 
 import '../Styles/TableCheckbox.scss'
 
@@ -35,26 +35,37 @@ class TableCheckbox extends Component {
         this.props.fetchTickets();
         this.props.history.push("Tickets");
     }
+    componentDidMount(){
+        this.props.fetchAllResults(this.props.tickets.user);
+    }
     render() {
-        //console.log(this.props.tickets.tickets.data);
         const allTheTables = tableNames;
         const renderTables = allTheTables.map((names, i)=>(
             <Checkbox key={i} name={names} Change={this.handleChange}/>
         ))
-        return (
-            <div>
-                <form className="Form-Position" onSubmit={this.handleSubmit}>
-                    <h2>All Fields</h2>
-                    <div className="Checkboxes">
-                        {renderTables}
+        if(this.props.tickets.count === null){
+            return null
+        }
+        else{
+            return (
+                <div>
+                    <form className="Form-Position" onSubmit={this.handleSubmit}>
+                        <h2>All Fields</h2>
+                        <div className="Checkboxes">
+                            {renderTables}
+                        </div>
+                        <input type="submit" value="Submit" />
+                    </form>
+                    <div className="user-stats">
+                        <h2>User: {this.props.tickets.user}</h2>
+                        <h5>Total Comparisons: {this.props.tickets.count.data}</h5>
                     </div>
-                    <input type="submit" value="Submit"/>
-                </form>
-            </div>
-        )
+                </div>
+            )
+        }
     }
 }
-function mapStatetoProps(tickets){
-    return {tickets};
+function mapStatetoProps(tickets, user, count){
+    return {tickets, user, count};
 }
-export default withRouter(connect(mapStatetoProps, {getTables, fetchTickets})(TableCheckbox));
+export default withRouter(connect(mapStatetoProps, {getTables, fetchTickets, fetchAllResults})(TableCheckbox));
