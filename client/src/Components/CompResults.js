@@ -18,7 +18,11 @@ function Comparisons(props){
 
 class CompResults extends Component {
     componentDidMount(){
-        this.props.fetchResults();
+        const User = {
+            user: this.props.user
+        }
+        console.log(this.props.user);
+        this.props.fetchResults(User);
     }
     render() {
         if(this.props.comparisons != null){
@@ -39,7 +43,7 @@ class CompResults extends Component {
         }
     }
 }
-function mapStatetoProps({comparisons}){
-    return {comparisons};
+function mapStatetoProps({user, comparisons}){
+    return {user, comparisons};
 }
 export default connect(mapStatetoProps, {fetchResults})(CompResults);

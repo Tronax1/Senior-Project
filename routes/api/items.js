@@ -10,7 +10,7 @@ router.get('/', async (req, res) =>{
 });
 
 router.get('/scores', async (req, res) =>{
-    const results = await Result.find();
+    const results = await Result.find({user: req.query.user});
     res.json(results);
 })
 

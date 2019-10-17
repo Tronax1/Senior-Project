@@ -3,11 +3,14 @@ import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { logOut } from '../../actions'
 import { withRouter } from 'react-router-dom'
-import { fetchUser } from '../../actions'
+import { fetchUser, fetchTickets } from '../../actions'
 
 import '../../Styles/NavBar.scss'
 
 class NavBar extends Component {
+    componentDidMount(){
+        this.props.fetchTickets();
+    }
     render() {
         if(!this.props.user){
            return null;
@@ -32,4 +35,4 @@ class NavBar extends Component {
 function mapStatetoProps({user}){
     return {user};
 }
-export default withRouter(connect(mapStatetoProps, {logOut, fetchUser})(NavBar));
+export default withRouter(connect(mapStatetoProps, {logOut, fetchUser, fetchTickets})(NavBar));

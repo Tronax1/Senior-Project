@@ -1,4 +1,4 @@
-import { GET_TABLES, GET_USER, GET_RESULTS, GET_TICKETS } from './types';
+import { GET_TABLES, GET_USER, GET_RESULTS, GET_TICKETS, RANDOM_TICKET } from './types';
 import axios from 'axios';
 
 
@@ -27,8 +27,12 @@ export const getTables = (tables) => dispatch =>{
     })
 }
 
-export const fetchResults = () => async dispatch =>{
-    const comparisons = await axios.get('/api/items/scores');
+export const fetchResults = (user) => async dispatch =>{
+    const comparisons = await axios.get('/api/items/scores', {
+        params: {
+            user: user.user
+        }
+    });
     dispatch({
         type: GET_RESULTS,
         payload: comparisons
@@ -46,6 +50,19 @@ export const addResult = (item) => async dispatch =>{
 }
 export const getUser = (user) => dispatch =>{
     userName.push(user);
+}
+
+export const randomTicket = (min, max) => dispatch =>{
+    const num1 = Math.floor(Math.random() * (max - min) + min);
+    const num2 = Math.floor(Math.random() * (max - min) + min);
+    const selectedTickets = {
+        num1,
+        num2
+    }
+    dispatch({
+        type: RANDOM_TICKET,
+        payload: selectedTickets
+    })
 }
 export const logOut = () => dispatch =>{
     userName.pop();
