@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import LikertScale from "./LikertScale"
 import Ticket from "./Ticket"
 import { connect } from "react-redux"
-import { randomTicket } from "../actions"
 import '../Styles/TicketPage.scss'
 
 
@@ -33,4 +32,4 @@ class TicketPage extends Component {
 function mapStatetoProps({tickets, random}){
     return {tickets, random};
 }
-export default connect(mapStatetoProps, { randomTicket })(TicketPage);
+export default connect(mapStatetoProps, null)(TicketPage);

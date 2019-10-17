@@ -3,7 +3,7 @@ import Tables from './Tables'
 import tableNames from './tableNames'
 import {withRouter} from 'react-router-dom'
 import { connect } from 'react-redux'
-import { getTables, randomTicket, fetchTickets } from '../actions'
+import { getTables, fetchTickets } from '../actions'
 
 import '../Styles/TableCheckbox.scss'
 
@@ -57,4 +57,4 @@ class TableCheckbox extends Component {
 function mapStatetoProps(tickets){
     return {tickets};
 }
-export default withRouter(connect(mapStatetoProps, {getTables, randomTicket, fetchTickets})(TableCheckbox));
+export default withRouter(connect(mapStatetoProps, {getTables, fetchTickets})(TableCheckbox));

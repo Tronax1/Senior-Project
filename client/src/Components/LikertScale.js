@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { addResult, randomTicket, fetchTickets } from '../actions'
+import { addResult, fetchTickets } from '../actions'
 import '../Styles/LikertScale.scss'
 
 class LikertScale extends Component {
@@ -64,4 +64,4 @@ class LikertScale extends Component {
 function mapStatetoProps({user, tickets, random}){
     return {user, tickets, random};
 }
-export default connect(mapStatetoProps, { addResult, randomTicket, fetchTickets })(LikertScale);
+export default connect(mapStatetoProps, { addResult, fetchTickets })(LikertScale);
