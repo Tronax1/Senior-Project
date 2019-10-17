@@ -5,8 +5,16 @@ const Ticket = require('../../Model/TicketSchema');
 const Result = require('../../Model/LikertSchema');
 
 router.get('/', async (req, res) =>{
-    const Items = await Ticket.find();
-    res.json(Items);
+    const count = await Ticket.countDocuments();
+    const random1 = Math.floor(Math.random() * count);
+    const item1 = await Ticket.findOne().skip(random1); 
+    const random2 = Math.floor(Math.random() * count)
+    const item2 = await Ticket.findOne().skip(random2);
+    const tickets = [
+        item1,
+        item2
+    ];
+    res.json(tickets);
 });
 
 router.get('/scores', async (req, res) =>{
