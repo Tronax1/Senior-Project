@@ -29,7 +29,7 @@ class TicketPage extends Component {
         }
     }
 }
-function mapStatetoProps({tickets, random}){
-    return {tickets, random};
+function mapStatetoProps({tickets}){
+    return {tickets};
 }
 export default connect(mapStatetoProps, null)(TicketPage);
