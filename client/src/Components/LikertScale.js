@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { addResult, randomTicket } from '../actions'
+import { addResult, randomTicket, fetchTickets } from '../actions'
 import '../Styles/LikertScale.scss'
 
 class LikertScale extends Component {
@@ -30,7 +30,9 @@ class LikertScale extends Component {
                 result: this.state.Scale
             }
             this.props.addResult(result);
-            this.props.randomTicket(0, this.props.tickets.data.length - 1);
+            //this.props.randomTicket(0, this.props.tickets.data.length - 1);
+            this.props.fetchTickets();
+            console.log(this.props.tickets);
         }
     }
     render() {
@@ -62,4 +64,4 @@ class LikertScale extends Component {
 function mapStatetoProps({user, tickets, random}){
     return {user, tickets, random};
 }
-export default connect(mapStatetoProps, { addResult, randomTicket })(LikertScale);
+export default connect(mapStatetoProps, { addResult, randomTicket, fetchTickets })(LikertScale);

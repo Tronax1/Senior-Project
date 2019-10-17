@@ -3,7 +3,7 @@ import Tables from './Tables'
 import tableNames from './tableNames'
 import {withRouter} from 'react-router-dom'
 import { connect } from 'react-redux'
-import { getTables, randomTicket } from '../actions'
+import { getTables, randomTicket, fetchTickets } from '../actions'
 
 import '../Styles/TableCheckbox.scss'
 
@@ -32,7 +32,7 @@ class TableCheckbox extends Component {
         e.preventDefault();
         const selectedTables = this.state;
         this.props.getTables(selectedTables);
-        this.props.randomTicket(0, this.props.tickets.tickets.data.length - 1);
+        this.props.fetchTickets();
         this.props.history.push("Tickets");
     }
     render() {
@@ -57,4 +57,4 @@ class TableCheckbox extends Component {
 function mapStatetoProps(tickets){
     return {tickets};
 }
-export default withRouter(connect(mapStatetoProps, {getTables, randomTicket})(TableCheckbox));
+export default withRouter(connect(mapStatetoProps, {getTables, randomTicket, fetchTickets})(TableCheckbox));

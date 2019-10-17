@@ -5,8 +5,13 @@ const Ticket = require('../../Model/TicketSchema');
 const Result = require('../../Model/LikertSchema');
 
 router.get('/', async (req, res) =>{
-    const Items = await Ticket.find();
-    res.json(Items);
+    const item1 = await Ticket.findOne(); 
+    const item2 = await Ticket.findOne();
+    const tickets = [
+        item1,
+        item2
+    ];
+    res.json(tickets);
 });
 
 router.get('/scores', async (req, res) =>{

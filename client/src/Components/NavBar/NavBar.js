@@ -8,9 +8,6 @@ import { fetchUser, fetchTickets } from '../../actions'
 import '../../Styles/NavBar.scss'
 
 class NavBar extends Component {
-    componentDidMount(){
-        this.props.fetchTickets();
-    }
     render() {
         if(!this.props.user){
            return null;
