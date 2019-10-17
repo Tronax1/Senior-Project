@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { logOut } from '../../actions'
+import { logOut, fetchUser } from '../../actions'
 import { withRouter } from 'react-router-dom'
-import { fetchUser, fetchTickets } from '../../actions'
 
 import '../../Styles/NavBar.scss'
 
@@ -32,4 +31,4 @@ class NavBar extends Component {
 function mapStatetoProps({user}){
     return {user};
 }
-export default withRouter(connect(mapStatetoProps, {logOut, fetchUser, fetchTickets})(NavBar));
+export default withRouter(connect(mapStatetoProps, {logOut, fetchUser})(NavBar));

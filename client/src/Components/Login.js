@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { getUser } from '../actions'
+import { getUser, fetchUser } from '../actions'
 import { withRouter } from 'react-router-dom'
-import { fetchUser } from '../actions'
 
 import '../Styles/Login.scss'
 
