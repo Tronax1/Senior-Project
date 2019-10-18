@@ -3,16 +3,46 @@
     flex-direction: row;
     width: 100%;
     height: 5vh;
-    background-color: red;
     border-radius: 5px;
     margin-bottom: 7px;
-    justify-content: space-evenly;
+    transition-duration: 0.3s;
+    transition-delay: 0.01s;
+}
+.Top-Row{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 5vh;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: gray;
+}
+.Top-Row > div{
+    width: 25vw;
+}
+.Top-Row > div:hover{
+    cursor: default;
+}
+.Comparison-Element:hover{
+    background-color: #7FFFD4;
+
+}
+.Comparison-Element > div {
+    width: 25vw;
+}
+.Comparison-Element > div:hover{
+    cursor: default;
 }
 .Comparison-Flex{
     display: flex;
     flex-direction: column;
-    width: 60vw;
+    width: 70vw;
     position: absolute;
     left: 20vw;
-    top: 20vh;
+    top: 10vh;
+}
+.All-Results{
+    height: 70vh;
+    overflow: auto;
+    width: 100%;
 }

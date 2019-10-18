@@ -7,11 +7,11 @@ import '../Styles/CompResults.scss'
 function Comparisons(props){
     return (
         <div className="Comparison-Element">
-            <div>ID1: {props.OID1}</div>
-            <div>ID2: {props.OID2}</div>
-            <div>Result:  {props.Result}</div>
-            <div>User: {props.User}</div>
-            <div>Date: {props.time}</div>
+            <div>{props.OID1}</div>
+            <div>{props.OID2}</div>
+            <div>{props.Result}</div>
+            <div>{props.User}</div>
+            <div>{props.time}</div>
         </div>
     );
 }
@@ -34,7 +34,16 @@ class CompResults extends Component {
             ))
             return (
                 <div className="Comparison-Flex">
-                    {renderResults}
+                    <div className="Top-Row">
+                        <div>ID1</div>
+                        <div>ID2</div>
+                        <div>Result</div>
+                        <div>User</div>
+                        <div>Time</div>
+                    </div>
+                    <div className="All-Results">
+                        {renderResults}
+                    </div>     
                 </div>
             )
         }

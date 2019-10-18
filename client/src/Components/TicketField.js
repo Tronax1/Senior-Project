@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import '../Styles/TicketField.scss'
 
 export default class TicketField extends Component {
     render() {
@@ -8,7 +9,10 @@ export default class TicketField extends Component {
         return (
             <div>
                 <h2>{this.props.title}</h2>
-                <input type="text" value={this.props.datas} disabled/>
+                <div className="Input-Field">
+                    <p>{this.props.datas}</p>
+                </div>
+               { /*<input className="Input-Field" type="text-area" value={this.props.datas} disabled/>*/}
             </div>
         )
     }
