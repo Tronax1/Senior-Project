@@ -96,7 +96,8 @@ const allTables = {
     GCRecord: false,
     Notes: false,
     Description: false,
-    TimeFromSubmitToClose: false
+    TimeFromSubmitToClose: false,
+    comparisons: ""
 }
 
 export default allTables;

@@ -21,6 +21,7 @@ class TableCheckbox extends Component {
         super(props);
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleComparisonChange = this.handleComparisonChange.bind(this);
         this.state = Tables;
     }
     handleChange(e){
@@ -28,9 +29,15 @@ class TableCheckbox extends Component {
             [e.target.name]: true
         })
     }
+    handleComparisonChange(e){
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
     handleSubmit(e){
         e.preventDefault();
         const selectedTables = this.state;
+        console.log(selectedTables.comparisons);
         this.props.getTables(selectedTables);
         this.props.fetchTickets();
         this.props.history.push("Tickets");
@@ -54,6 +61,8 @@ class TableCheckbox extends Component {
                         <div className="Checkboxes">
                             {renderTables}
                         </div>
+                        <input type="text" name="comparisons" 
+                        placeholder="Number of comparisons" onChange={this.handleComparisonChange} required/>
                         <input type="submit" value="Submit" />
                     </form>
                     <div className="user-stats">
