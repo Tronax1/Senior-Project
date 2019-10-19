@@ -1,4 +1,10 @@
-import { GET_TABLES, GET_USER, GET_RESULTS, GET_TICKETS, GET_TOTAL_COMPARISONS} from './types';
+import { GET_TABLES, 
+    GET_USER, 
+    GET_RESULTS, 
+    GET_TICKETS, 
+    GET_TOTAL_COMPARISONS,
+    GET_COMPARISON_COUNT
+} from './types';
 import axios from 'axios';
 
 
@@ -19,7 +25,19 @@ export const fetchUser = () => dispatch =>{
         })
     }
 }
-
+export const setCounter = (count) => dispatch =>{
+    dispatch({
+        type: GET_COMPARISON_COUNT,
+        payload: count
+    })
+}
+export const decreaseCount = (count) => dispatch =>{
+    const newCount = count - 1;
+    dispatch({
+        type: GET_COMPARISON_COUNT,
+        payload: newCount
+    })
+}
 export const getTables = (tables) => dispatch =>{
     dispatch({
         type: GET_TABLES,

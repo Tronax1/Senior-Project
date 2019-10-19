@@ -3,7 +3,7 @@ import Tables from './Tables'
 import tableNames from './tableNames'
 import {withRouter} from 'react-router-dom'
 import { connect } from 'react-redux'
-import { getTables, fetchTickets, fetchAllResults } from '../actions'
+import { getTables, fetchTickets, fetchAllResults, setCounter } from '../actions'
 
 import '../Styles/TableCheckbox.scss'
 
@@ -37,7 +37,8 @@ class TableCheckbox extends Component {
     handleSubmit(e){
         e.preventDefault();
         const selectedTables = this.state;
-        console.log(selectedTables.comparisons);
+        this.props.setCounter(selectedTables.comparisons);
+        //console.log(selectedTables.comparisons);
         this.props.getTables(selectedTables);
         this.props.fetchTickets();
         this.props.history.push("Tickets");
@@ -47,6 +48,7 @@ class TableCheckbox extends Component {
     }
     render() {
         const allTheTables = tableNames;
+        //Dinamically render all the checkboxes 
         const renderTables = allTheTables.map((names, i)=>(
             <Checkbox key={i} name={names} Change={this.handleChange}/>
         ))
@@ -77,4 +79,4 @@ class TableCheckbox extends Component {
 function mapStatetoProps(tickets, user, count){
     return {tickets, user, count};
 }
-export default withRouter(connect(mapStatetoProps, {getTables, fetchTickets, fetchAllResults})(TableCheckbox));
+export default withRouter(connect(mapStatetoProps, {getTables, fetchTickets, fetchAllResults, setCounter})(TableCheckbox));

@@ -4,11 +4,13 @@ import userReducer from './userReducer'
 import comparisonReducer from './comparisonReducer'
 import ticketReducer from './ticketReducer'
 import countReducer from './countReducer'
+import comparisonCountReducer from './comparisonCountReducer'
 
 export default combineReducers({
     table: tableReducer,
     user: userReducer,
     comparisons: comparisonReducer,
     tickets: ticketReducer,
-    count: countReducer
+    count: countReducer,
+    compCount: comparisonCountReducer
 })

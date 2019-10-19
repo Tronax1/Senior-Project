@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { addResult, fetchTickets } from '../actions'
+import { addResult, fetchTickets, decreaseCount } from '../actions'
 import '../Styles/LikertScale.scss'
 
 class LikertScale extends Component {
@@ -31,7 +31,8 @@ class LikertScale extends Component {
             }
             this.props.addResult(result);
             this.props.fetchTickets();
-            console.log(this.props.tickets);
+            this.props.decreaseCount(this.props.compCount);
+            console.log(this.props.compCount);
         }
     }
     render() {
@@ -60,7 +61,7 @@ class LikertScale extends Component {
         )
     }
 }
-function mapStatetoProps({user, tickets}){
-    return {user, tickets};
+function mapStatetoProps({user, tickets, compCount}){
+    return {user, tickets, compCount};
 }
-export default connect(mapStatetoProps, { addResult, fetchTickets })(LikertScale);
+export default connect(mapStatetoProps, { addResult, fetchTickets, decreaseCount })(LikertScale);
