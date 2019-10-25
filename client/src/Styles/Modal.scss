@@ -1,0 +1,33 @@
+.Modal-bg{
+    background-color: black;
+    z-index: 3;
+    opacity: 0.5;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.Modal-Content{
+    background-color: white;
+    width: 80vw;
+    height: 80vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 4;
+    border-radius: 8px;
+    overflow: auto;
+}
+.Modal-Header{
+    text-align: right;
+}
+.Close-btn{
+    font-size: 2rem;
+    margin-right: 13px;
+}
+.Close-btn:hover{
+    color: red;
+    cursor: default;
+}

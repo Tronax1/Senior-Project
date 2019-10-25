@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getUser, fetchUser } from '../actions'
 import { withRouter } from 'react-router-dom'
+import Modal from './Modal'
 
 import '../Styles/Login.scss'
 
@@ -35,6 +36,7 @@ class Login extends Component {
                     name="user" onChange={this.handleChange} required/>
                     <input className="Submit-btn" type="submit" value="Login"/>
                 </form>
+                <Modal/>
             </div>
         )
     }
