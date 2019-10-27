@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux' 
 import { fetchResults } from '../actions'
+import Modal from './Modal'
 
 import '../Styles/CompResults.scss'
 
@@ -12,11 +13,25 @@ function Comparisons(props){
             <div>{props.Result}</div>
             <div>{props.User}</div>
             <div>{props.time}</div>
+            <button onClick={props.modalShow}>EDIT</button>
         </div>
     );
 }
 
 class CompResults extends Component {
+    constructor(props){
+        super(props);
+        this.showModal = this.showModal.bind(this);
+        this.state = {
+            show: false
+        }
+    }
+    showModal(){
+        console.log("llegue");
+        this.setState({
+            show: !this.state.show
+        });
+    }
     componentDidMount(){
         const User = {
             user: this.props.user
@@ -30,21 +45,25 @@ class CompResults extends Component {
             const allResults = this.props.comparisons.data;
             const renderResults = allResults.map((items, i) => (
                 <Comparisons key={i} OID1={items.ID1} OID2={items.ID2}
-                    User={items.user} Result={items.result} time={items.date} />
+                    User={items.user} Result={items.result} time={items.date} 
+                    modalShow={()=>{this.showModal()}}/>
             ))
             return (
-                <div className="Comparison-Flex">
-                    <div className="Top-Row">
-                        <div>ID1</div>
-                        <div>ID2</div>
-                        <div>Result</div>
-                        <div>User</div>
-                        <div>Time</div>
+                <>
+                    <div className="Comparison-Flex">
+                        <div className="Top-Row">
+                            <div>ID1</div>
+                            <div>ID2</div>
+                            <div>Result</div>
+                            <div>User</div>
+                            <div>Time</div>
+                        </div>
+                        <div className="All-Results">
+                            {renderResults}
+                        </div>     
                     </div>
-                    <div className="All-Results">
-                        {renderResults}
-                    </div>     
-                </div>
+                    <Modal show={this.state.show} hideModal={()=>{this.showModal()}}/>
+                </>
             )
         }
         else{
