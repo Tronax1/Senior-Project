@@ -22,15 +22,20 @@ class CompResults extends Component {
     constructor(props){
         super(props);
         this.showModal = this.showModal.bind(this);
+        this.closeModal = this.closeModal.bind(this);
         this.state = {
-            show: false
+            show: false,
         }
     }
     showModal(){
-        console.log("llegue");
         this.setState({
-            show: !this.state.show
+            show: true
         });
+    }
+    closeModal(){
+        this.setState({
+            show: false
+        })
     }
     componentDidMount(){
         const User = {
@@ -46,7 +51,7 @@ class CompResults extends Component {
             const renderResults = allResults.map((items, i) => (
                 <Comparisons key={i} OID1={items.ID1} OID2={items.ID2}
                     User={items.user} Result={items.result} time={items.date} 
-                    modalShow={()=>{this.showModal()}}/>
+                    modalShow={this.showModal}/>
             ))
             return (
                 <>
@@ -62,7 +67,7 @@ class CompResults extends Component {
                             {renderResults}
                         </div>     
                     </div>
-                    <Modal show={this.state.show} hideModal={()=>{this.showModal()}}/>
+                    <Modal show={this.state.show} hideModal={this.closeModal}/>
                 </>
             )
         }
