@@ -27,7 +27,8 @@ class LikertScale extends Component {
                 ID1: this.props.ticketOne.ItemID,
                 ID2: this.props.ticketTwo.ItemID,
                 user: this.props.user,
-                result: this.state.Scale
+                result: this.state.Scale,
+                selectedFields: this.props.selectedTables
             }
             this.props.addResult(result);
             this.props.fetchTickets();
@@ -61,7 +62,7 @@ class LikertScale extends Component {
         )
     }
 }
-function mapStatetoProps({user, tickets, compCount}){
-    return {user, tickets, compCount};
+function mapStatetoProps({user, tickets, compCount, selectedTables}){
+    return {user, tickets, compCount, selectedTables};
 }
 export default connect(mapStatetoProps, { addResult, fetchTickets, decreaseCount })(LikertScale);

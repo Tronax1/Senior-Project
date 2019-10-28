@@ -3,7 +3,8 @@ import { GET_TABLES,
     GET_RESULTS, 
     GET_TICKETS, 
     GET_TOTAL_COMPARISONS,
-    GET_COMPARISON_COUNT
+    GET_COMPARISON_COUNT,
+    GET_SELECTED_TABLES
 } from './types';
 import axios from 'axios';
 
@@ -77,6 +78,12 @@ export const fetchAllResults = (user) => async dispatch =>{
 }
 export const addResult = (item) => async dispatch =>{
     await axios.post('/api/items', item);
+}
+export const addSelectedTables = (tableNames) => dispatch =>{
+    dispatch({
+        type: GET_SELECTED_TABLES,
+        payload: tableNames
+    });
 }
 export const getUser = (user) => dispatch =>{
     userName.push(user);

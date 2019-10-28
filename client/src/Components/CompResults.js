@@ -13,7 +13,7 @@ function Comparisons(props){
             <div>{props.Result}</div>
             <div>{props.User}</div>
             <div>{props.time}</div>
-            <button onClick={props.modalShow}>EDIT</button>
+            <button onClick={()=>props.modalShow(props.OID1, props.OID2, props.previousFields)}>EDIT</button>
         </div>
     );
 }
@@ -25,11 +25,17 @@ class CompResults extends Component {
         this.closeModal = this.closeModal.bind(this);
         this.state = {
             show: false,
+            OID1: '',
+            OID2: '',
+            selected: ''
         }
     }
-    showModal(){
+    showModal(id1, id2, previousSelectedFields){
         this.setState({
-            show: true
+            show: true,
+            OID1: id1,
+            OID2: id2,
+            selected: previousSelectedFields
         });
     }
     closeModal(){
@@ -41,17 +47,16 @@ class CompResults extends Component {
         const User = {
             user: this.props.user
         }
-        console.log(this.props.user);
         this.props.fetchResults(User);
     }
     render() {
         if(this.props.comparisons != null){
-            console.log(this.props.comparisons.data);
+            //console.log(this.props.comparisons.data);
             const allResults = this.props.comparisons.data;
             const renderResults = allResults.map((items, i) => (
                 <Comparisons key={i} OID1={items.ID1} OID2={items.ID2}
                     User={items.user} Result={items.result} time={items.date} 
-                    modalShow={this.showModal}/>
+                    modalShow={this.showModal} previousFields={items.selectedFields}/>
             ))
             return (
                 <>
