@@ -1,20 +1,15 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchPreviousSelected } from '../actions'
 
 import '../Styles/Modal.scss'
 
 class Modal extends Component {
-    componentDidMount(){
-        console.log(this.props.ID1);
-        this.props.fetchPreviousSelected(this.props.ID1, this.props.ID2, this.props.Selected);
-    }
     render() {
-        if(!this.props.show){
+        if(!this.props.show || this.props.previousTickets === null){
             return null;
         }
         else{
-            console.log(this.props.previousTickets);
+            console.log(this.props.previousTickets.data);
             return (
                 <>
                     <div className="Modal-bg"></div>
@@ -23,6 +18,7 @@ class Modal extends Component {
                             <span className="Close-btn" onClick={this.props.hideModal}>x</span>
                         </div>
                         <div className="Modal-Body" >
+                            {this.props.previousTickets.data[0].OID}
                         </div>
                     </div>
                 </>
@@ -33,4 +29,4 @@ class Modal extends Component {
 function mapStatetoProps({previousTickets}){
     return {previousTickets};
 }
-export default connect(mapStatetoProps, {fetchPreviousSelected})(Modal)
+export default connect(mapStatetoProps, null)(Modal)

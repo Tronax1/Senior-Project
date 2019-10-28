@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux' 
-import { fetchResults } from '../actions'
+import { fetchResults, fetchPreviousSelected } from '../actions'
 import Modal from './Modal'
 
 import '../Styles/CompResults.scss'
@@ -13,7 +13,10 @@ function Comparisons(props){
             <div>{props.Result}</div>
             <div>{props.User}</div>
             <div>{props.time}</div>
-            <button onClick={()=>props.modalShow(props.OID1, props.OID2, props.previousFields)}>EDIT</button>
+            <button onClick={() => {
+                props.fetchPrev(props.OID1, props.OID2, props.previousFields)
+                props.modalShow()}
+                }>EDIT</button>
         </div>
     );
 }
@@ -24,18 +27,12 @@ class CompResults extends Component {
         this.showModal = this.showModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
         this.state = {
-            show: false,
-            OID1: '',
-            OID2: '',
-            selected: ''
+            show: false
         }
     }
-    showModal(id1, id2, previousSelectedFields){
+    showModal(){
         this.setState({
-            show: true,
-            OID1: id1,
-            OID2: id2,
-            selected: previousSelectedFields
+            show: true
         });
     }
     closeModal(){
@@ -56,7 +53,8 @@ class CompResults extends Component {
             const renderResults = allResults.map((items, i) => (
                 <Comparisons key={i} OID1={items.ID1} OID2={items.ID2}
                     User={items.user} Result={items.result} time={items.date} 
-                    modalShow={this.showModal} previousFields={items.selectedFields}/>
+                    modalShow={this.showModal} previousFields={items.selectedFields}
+                    fetchPrev={this.props.fetchPreviousSelected}/>
             ))
             return (
                 <>
@@ -72,8 +70,7 @@ class CompResults extends Component {
                             {renderResults}
                         </div>     
                     </div>
-                    <Modal show={this.state.show} hideModal={this.closeModal} ID1={this.state.OID1}
-                    ID2={this.state.OID2} Selected={this.state.selected}/>
+                    <Modal show={this.state.show} hideModal={this.closeModal}/>
                 </>
             )
         }
@@ -85,4 +82,4 @@ class CompResults extends Component {
 function mapStatetoProps({user, comparisons}){
     return {user, comparisons};
 }
-export default connect(mapStatetoProps, {fetchResults})(CompResults);
+export default connect(mapStatetoProps, { fetchResults, fetchPreviousSelected})(CompResults);
