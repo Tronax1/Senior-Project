@@ -6,6 +6,7 @@ const LikertCard = new Schema({
     ID2: String,
     user: String,
     result: String,
+    selectedFields: String,
     date: {
         type: Date,
         default: Date.now

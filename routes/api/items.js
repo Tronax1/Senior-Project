@@ -22,6 +22,15 @@ router.get('/scores', async (req, res) =>{
     res.json(results);
 })
 
+router.get('/previousScores', async (req, res)=>{
+    const ticketOne = await Ticket.findOne({ItemID: req.query.OID1}, req.query.selected);
+    const ticketTwo = await Ticket.findOne({ItemID: req.query.OID2}, req.query.selected);
+    const selectedTickets = [
+        ticketOne,
+        ticketTwo
+    ]
+    res.json(selectedTickets);
+})
 router.get('/total', async (req, res) =>{
     const count = await Result.countDocuments({user: req.query.user});
     res.json(count);
@@ -33,6 +42,7 @@ router.post('/', async (req, res) =>{
         ID2: req.body.ID2,
         user: req.body.user,
         result: req.body.result,
+        selectedFields: req.body.selectedFields
     });
     const addedEntry = await newResult.save();
     res.json(addedEntry);

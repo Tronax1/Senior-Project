@@ -3,7 +3,9 @@ import { GET_TABLES,
     GET_RESULTS, 
     GET_TICKETS, 
     GET_TOTAL_COMPARISONS,
-    GET_COMPARISON_COUNT
+    GET_COMPARISON_COUNT,
+    GET_SELECTED_TABLES,
+    GET_PREVIOUS_TICKETS
 } from './types';
 import axios from 'axios';
 
@@ -77,6 +79,25 @@ export const fetchAllResults = (user) => async dispatch =>{
 }
 export const addResult = (item) => async dispatch =>{
     await axios.post('/api/items', item);
+}
+export const addSelectedTables = (tableNames) => dispatch =>{
+    dispatch({
+        type: GET_SELECTED_TABLES,
+        payload: tableNames
+    });
+}
+export const fetchPreviousSelected = (ticket1, ticket2, fields) => async dispatch =>{
+    const PreviousSelected = await axios.get('/api/items/previousScores', {
+        params:{
+            OID1: ticket1,
+            OID2: ticket2,
+            selected: fields
+        }
+    });
+    dispatch({
+        type: GET_PREVIOUS_TICKETS,
+        payload: PreviousSelected
+    });
 }
 export const getUser = (user) => dispatch =>{
     userName.push(user);
