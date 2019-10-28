@@ -1,7 +1,25 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import TicketField from './TicketField'
 
 import '../Styles/Modal.scss'
+
+function OldTickets(props){
+    console.log(props.theTicket)
+    const ticketData = Object.values(props.theTicket);
+    const ticketFields = Object.keys(props.theTicket);
+    ticketFields.shift();
+    ticketData.shift();
+    console.log(ticketFields);
+    const completeTicket = ticketFields.map((item, i) =>(
+        <TicketField key={i} title={item} datas={ticketData[i]} show={true} />
+    ))
+    return(
+        <div className="Ticket">
+            {completeTicket}
+        </div>
+    );
+}
 
 class Modal extends Component {
     render() {
@@ -9,9 +27,7 @@ class Modal extends Component {
             return null;
         }
         else{
-            console.log(this.props.previousTickets.data);
-            const ticketOneTitles = Object.keys(this.props.previousTickets.data[0]);
-            const ticketTwo = Object.keys(this.props.previousTickets.data[1]);
+            console.log(this.props.previousTickets.data[0]);
             return (
 
                 <>
@@ -21,7 +37,8 @@ class Modal extends Component {
                             <span className="Close-btn" onClick={this.props.hideModal}>x</span>
                         </div>
                         <div className="Modal-Body" >
-                            {this.props.previousTickets.data[0].OID}
+                            <OldTickets theTicket={this.props.previousTickets.data[0]}/>
+                            <OldTickets theTicket={this.props.previousTickets.data[1]} />
                         </div>
                     </div>
                 </>
