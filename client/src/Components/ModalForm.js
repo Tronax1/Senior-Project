@@ -35,7 +35,7 @@ class ModalForm extends Component {
             }
             this.props.addResult(result);
             this.props.removeModal();
-            this.props.fetchResults(user);
+            //this.props.fetchResults(user);
             this.setState({
                 Scale: ''
             })
@@ -43,6 +43,13 @@ class ModalForm extends Component {
             //this.props.decreaseCount(this.props.compCount);
             console.log(this.props.compCount);
         }
+    }
+    componentWillUnmount(){
+        const {User} = this.props.resultData
+        const user = {
+            user: User
+        }
+        this.props.fetchResults(user);
     }
     render() {
         return (
