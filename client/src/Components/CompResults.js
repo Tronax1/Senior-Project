@@ -72,7 +72,8 @@ class CompResults extends Component {
                             {renderResults}
                         </div>     
                     </div>
-                    <Modal show={this.state.show} hideModal={this.closeModal}/>
+                    <Modal show={this.state.show} hideModal={this.closeModal} ID1={this.state.OID1}
+                    ID2={this.state.OID2} Selected={this.state.selected}/>
                 </>
             )
         }

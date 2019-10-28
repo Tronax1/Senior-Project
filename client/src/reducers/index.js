@@ -6,6 +6,7 @@ import ticketReducer from './ticketReducer'
 import countReducer from './countReducer'
 import comparisonCountReducer from './comparisonCountReducer'
 import selectedTablesReducer from './selectedTablesReducer'
+import previousTicketSelected from './previousTicketSelected'
 
 export default combineReducers({
     table: tableReducer,
@@ -14,5 +15,6 @@ export default combineReducers({
     tickets: ticketReducer,
     count: countReducer,
     compCount: comparisonCountReducer,
-    selectedTables: selectedTablesReducer
+    selectedTables: selectedTablesReducer,
+    previousTickets: previousTicketSelected
 })
