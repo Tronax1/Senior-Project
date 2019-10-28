@@ -33,5 +33,9 @@
 }
 .Modal-Body{
     display: flex;
+    flex-direction: column;
+}
+.Modal-Tickets{
+    display: flex;
     flex-direction: row;
 }

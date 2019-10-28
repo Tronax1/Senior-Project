@@ -15,7 +15,7 @@ function Comparisons(props){
             <div>{props.time}</div>
             <button onClick={() => {
                 props.fetchPrev(props.OID1, props.OID2, props.previousFields)
-                props.modalShow()}
+                props.modalShow(props.OID1, props.OID2, props.previousFields, props.User)}
                 }>EDIT</button>
         </div>
     );
@@ -27,12 +27,20 @@ class CompResults extends Component {
         this.showModal = this.showModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
         this.state = {
-            show: false
+            show: false,
+            OID1: '',
+            OID2: '',
+            PreviousFields: '',
+            User: ''
         }
     }
-    showModal(){
+    showModal(id1, id2, result, user){
         this.setState({
-            show: true
+            show: true,
+            OID1: id1,
+            OID2: id2,
+            PreviousFields: result,
+            User: user
         });
     }
     closeModal(){
@@ -70,7 +78,7 @@ class CompResults extends Component {
                             {renderResults}
                         </div>     
                     </div>
-                    <Modal show={this.state.show} hideModal={this.closeModal}/>
+                    <Modal show={this.state.show} hideModal={this.closeModal} compareData={this.state}/>
                 </>
             )
         }
