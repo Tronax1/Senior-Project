@@ -10,7 +10,10 @@ class Modal extends Component {
         }
         else{
             console.log(this.props.previousTickets.data);
+            const ticketOneTitles = Object.keys(this.props.previousTickets.data[0]);
+            const ticketTwo = Object.keys(this.props.previousTickets.data[1]);
             return (
+
                 <>
                     <div className="Modal-bg"></div>
                     <div className="Modal-Content">
