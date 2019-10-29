@@ -10,8 +10,8 @@ Todo:
     ✔ Implement all the table options @started(19-10-01 12:49) @done(19-10-01 20:15) @lasted(7h26m5s)
     ✔ Store the results in Redux @done(19-10-02 15:49)
     ☐ Improve the UI
-    ☐ Add a field to display the username
-    ☐ Add a field to input the number of comparisons
+    ✔ Add a field to display the username @done(19-10-28 21:49)
+    ✔ Add a field to input the number of comparisons @done(19-10-28 21:49)
   Backend Server:
     ✔ Setup the database @started(19-09-24 16:33) @done(19-09-24 16:55) @lasted(22m24s)
     ✔ Make a schema for the database @done(19-10-08 13:00)
