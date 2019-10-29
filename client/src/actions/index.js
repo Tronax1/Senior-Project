@@ -73,7 +73,7 @@ export const fetchCSV = (user) => async dispatch =>{
     //        user: user
     //    }
     //});
-    window.open(`http://localhost:5000/api/items/exportCSV?user=${user}`);
+    window.open(`https://changegear-ticket-system.herokuapp.com/api/items/exportCSV?user=${user}`);
     //console.log(lelo);
 }
 
