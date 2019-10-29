@@ -19,7 +19,7 @@ Todo:
     ✔ Get and store the likert score results in the database @done(19-10-08 16:46)
     ✔ Configure the API routes to communicate with the front end @done(19-10-16 20:23)
     ☐ Export all the ticket results in csv
-    ☐ Export ticket results per user in csv
+    ✔ Export ticket results per user in csv @done(19-10-29 14:29)
   User Login Page:
     For the user login page
     ✔ Setup the UI for the login page @started(19-09-16 16:03) @done(19-09-16 16:41) @lasted(38m28s)
