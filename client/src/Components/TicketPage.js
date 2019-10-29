@@ -12,7 +12,6 @@ class TicketPage extends Component {
             return null;
         }
         else{
-            console.log(this.props.compCount)
             return (
                 <div className="Ticket-Structure">
                     <div>

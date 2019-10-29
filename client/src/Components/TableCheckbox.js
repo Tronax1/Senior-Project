@@ -37,7 +37,6 @@ class TableCheckbox extends Component {
     handleSubmit(e){
         e.preventDefault();
         const selectedTables = this.state;
-        //NEW CODE
         const tableKeys = Object.keys(selectedTables);
         const tableValues = Object.values(selectedTables);
         let dbSelectedProperties = "";
@@ -47,11 +46,8 @@ class TableCheckbox extends Component {
                 dbSelectedProperties += " ";
             }
         }
-        console.log(dbSelectedProperties);
         this.props.addSelectedTables(dbSelectedProperties);
-        //NEW CODE
         this.props.setCounter(selectedTables.comparisons);
-        //console.log(selectedTables.comparisons);
         this.props.getTables(selectedTables);
         this.props.fetchTickets();
         this.props.history.push("Tickets");

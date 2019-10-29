@@ -32,13 +32,9 @@ class ModalForm extends Component {
             }
             this.props.addResult(result);
             this.props.removeModal();
-            //this.props.fetchResults(user);
             this.setState({
                 Scale: ''
             })
-            //this.props.fetchTickets();
-            //this.props.decreaseCount(this.props.compCount);
-            console.log(this.props.compCount);
         }
     }
     componentWillUnmount(){

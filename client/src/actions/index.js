@@ -13,14 +13,12 @@ import axios from 'axios';
 const userName = [];
 export const fetchUser = () => dispatch =>{
     if(Array.isArray(userName) && userName.length === 0){
-        console.log("I am here");
         dispatch({
             type: GET_USER,
             payload: false
         })
     }
     else{
-        console.log("Logged in");
         dispatch({
             type: GET_USER,
             payload: userName[0]
@@ -67,14 +65,7 @@ export const fetchTickets = () => async dispatch =>{
 }
 
 export const fetchCSV = (user) => async dispatch =>{
-    //await axios.get('/api/items/exportCSV', {
-   //     responseType: 'blob',
-    //    params: {
-    //        user: user
-    //    }
-    //});
     window.open(`https://changegear-ticket-system.herokuapp.com/api/items/exportCSV?user=${user}`);
-    //console.log(lelo);
 }
 
 export const fetchAllResults = (user) => async dispatch =>{

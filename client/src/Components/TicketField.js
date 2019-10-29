@@ -12,7 +12,6 @@ export default class TicketField extends Component {
                 <div className="Input-Field">
                     <p>{this.props.datas}</p>
                 </div>
-               { /*<input className="Input-Field" type="text-area" value={this.props.datas} disabled/>*/}
             </div>
         )
     }

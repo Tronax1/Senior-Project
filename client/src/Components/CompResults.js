@@ -56,7 +56,6 @@ class CompResults extends Component {
     }
     render() {
         if(this.props.comparisons != null){
-            //console.log(this.props.comparisons.data);
             const allResults = this.props.comparisons.data;
             const renderResults = allResults.map((items, i) => (
                 <Comparisons key={i} OID1={items.ID1} OID2={items.ID2}
