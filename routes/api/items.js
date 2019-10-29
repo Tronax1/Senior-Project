@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { Parser } = require('json2csv');
 const fs = require('fs')
+const path = require('path');
 
 const fields = ['ID1', 'ID2', 'user', 'result', 'date'];
 const opts = {fields};
@@ -32,7 +33,7 @@ router.get('/exportCSV', async (req, res) =>{
     const parser = new Parser(opts);
     const csv = parser.parse(allResults);
     fs.writeFileSync('data.csv', csv);
-    res.download('./data.csv');
+    res.download(path.join(__dirname, '../../' ,'data.csv'));
 })
 
 router.get('/previousScores', async (req, res)=>{

@@ -67,12 +67,14 @@ export const fetchTickets = () => async dispatch =>{
 }
 
 export const fetchCSV = (user) => async dispatch =>{
-    await axios.get('/api/items/exportCSV', {
-        responseType: 'blob',
-        params: {
-            user: user
-        }
-    });
+    //await axios.get('/api/items/exportCSV', {
+   //     responseType: 'blob',
+    //    params: {
+    //        user: user
+    //    }
+    //});
+    window.open(`http://localhost:5000/api/items/exportCSV?user=${user}`);
+    //console.log(lelo);
 }
 
 export const fetchAllResults = (user) => async dispatch =>{
