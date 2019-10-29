@@ -66,6 +66,15 @@ export const fetchTickets = () => async dispatch =>{
     })
 }
 
+export const fetchCSV = (user) => async dispatch =>{
+    await axios.get('/api/items/exportCSV', {
+        responseType: 'blob',
+        params: {
+            user: user
+        }
+    });
+}
+
 export const fetchAllResults = (user) => async dispatch =>{
     const count = await axios.get('/api/items/total', {
         params: {

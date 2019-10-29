@@ -23,9 +23,6 @@ class ModalForm extends Component {
         }
         else {
             const {OID1, OID2, PreviousFields, User} = this.props.resultData;
-            const user = {
-                user: User
-            }
             const result = {
                 ID1: OID1,
                 ID2: OID2,

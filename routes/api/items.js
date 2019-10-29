@@ -1,5 +1,10 @@
 const express = require('express');
 const router = express.Router();
+const { Parser } = require('json2csv');
+const fs = require('fs')
+
+const fields = ['ID1', 'ID2', 'user', 'result', 'date'];
+const opts = {fields};
 
 const Ticket = require('../../Model/TicketSchema');
 const Result = require('../../Model/LikertSchema');
@@ -20,6 +25,14 @@ router.get('/', async (req, res) =>{
 router.get('/scores', async (req, res) =>{
     const results = await Result.find({user: req.query.user});
     res.json(results);
+})
+
+router.get('/exportCSV', async (req, res) =>{
+    const allResults = await Result.find({user: req.query.user});
+    const parser = new Parser(opts);
+    const csv = parser.parse(allResults);
+    fs.writeFileSync('data.csv', csv);
+    res.download('./data.csv');
 })
 
 router.get('/previousScores', async (req, res)=>{

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux' 
-import { fetchResults, fetchPreviousSelected } from '../actions'
+import { fetchResults, fetchPreviousSelected, fetchCSV } from '../actions'
 import Modal from './Modal'
 
 import '../Styles/CompResults.scss'
@@ -76,7 +76,8 @@ class CompResults extends Component {
                         </div>
                         <div className="All-Results">
                             {renderResults}
-                        </div>     
+                        </div>
+                        <button onClick={()=>this.props.fetchCSV(this.props.user)}>export</button>     
                     </div>
                     <Modal show={this.state.show} hideModal={this.closeModal} compareData={this.state}/>
                 </>
@@ -90,4 +91,4 @@ class CompResults extends Component {
 function mapStatetoProps({user, comparisons}){
     return {user, comparisons};
 }
-export default connect(mapStatetoProps, { fetchResults, fetchPreviousSelected})(CompResults);
+export default connect(mapStatetoProps, { fetchResults, fetchPreviousSelected, fetchCSV})(CompResults);
