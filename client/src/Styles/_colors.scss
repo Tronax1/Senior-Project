@@ -8,7 +8,7 @@ $lightGreen: #8dc63f;
 $darkGreen: #3d7600;
 //Button Structure
 $radius: 10px;
-$bottomBorder: solid 4px #3d7600 !important;
+$bottomBorder: solid 4px $darkGreen !important;
 //Animations
 @keyframes fadeIn{
     0% {
