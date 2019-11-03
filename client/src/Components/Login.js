@@ -33,8 +33,9 @@ class Login extends Component {
                     <h1>LOGIN</h1>
                     <input type="text" placeholder="User" 
                     name="user" onChange={this.handleChange} required/>
-                    <input className="Submit-btn" type="submit" value="Login"/>
+                    <input className="Submit-btn" type="submit" value="LOGIN"/>
                 </form>
+                <div className="Login-bg"/>
             </div>
         )
     }
