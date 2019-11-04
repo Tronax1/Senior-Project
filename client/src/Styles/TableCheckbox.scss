@@ -4,9 +4,15 @@
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: 25vh;
+    top: 35vh;
     left: 15vw;
     width: 70vw;
+    padding: 1%;
+    background-color: white;
+    border-radius: $radius;
+    box-shadow: 3px 3px 10px #02010080;
+    opacity: 0;
+    animation: fadeIn 0.3s ease-in 0.2s 1 forwards;
 }
 .Checkboxes{
     height: 50vh;
@@ -27,15 +33,22 @@
     background-color: #9dfff9;
 }
 .Submit-check{
-    width: 100%;
+    width: 95%;
     margin-top: 10px;
     padding-left: 10px;
 }
 
 .user-stats{
     position: absolute;
-    top: 10vh;
+    top: 15vh;
     right: 35vw;
+    background-color: white;
+    border-radius: $radius;
+    padding: 1%;
+    border-radius: $radius;
+    box-shadow: 3px 3px 10px #02010080;
+    opacity: 0;
+    animation: fadeIn 0.3s ease-in 0.4s 1 forwards;
 }
 @media only screen and (min-width: 768px){
     .Form-Position{
@@ -43,16 +56,12 @@
         left: 30vw;
         top: 4vh;
     }
-    .user-stats{
-        position: absolute;
-        top: 10vh;
-        right: 20vw;
-    }
     .Submit-check{
         width: 70%;
     }
     .user-stats{
         font-size: 1.5rem;
-        right: 15vw;
+        right: 10vw;
+        top: 4vh;
     }
 }

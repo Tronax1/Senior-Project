@@ -10,7 +10,7 @@ import '../Styles/TableCheckbox.scss'
 function Checkbox(props){
     return(
         <div>
-            <input  type="checkbox" id={props.name} name={props.name} value={true} onChange={props.Change}/>
+            <input  className="Blue-Check" type="checkbox" id={props.name} name={props.name} value={true} onChange={props.Change}/>
             <label htmlFor={props.name}>{props.name}</label>
         </div>
     );
