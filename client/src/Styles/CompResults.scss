@@ -1,3 +1,5 @@
+@import "/colors";
+
 .Comparison-Element{
     display: flex;
     flex-direction: row;
@@ -24,7 +26,7 @@
     cursor: default;
 }
 .Comparison-Element:hover{
-    background-color: #7FFFD4;
+    background-color: $specialOrange;
 
 }
 .Comparison-Element > div {
@@ -36,13 +38,36 @@
 .Comparison-Flex{
     display: flex;
     flex-direction: column;
-    width: 70vw;
+    width: 80vw;
     position: absolute;
-    left: 20vw;
-    top: 10vh;
+    left: 10vw;
+    top: 20vh;
 }
 .All-Results{
     height: 70vh;
     overflow: auto;
     width: 100%;
+}
+.Export-csv{
+    background: none;
+    border-style: none;
+    background-color: $lightGreen;
+    border-bottom: $bottomBorder;
+    border-radius: $radius;
+    font-size: 1.5rem;
+    transition-duration: 0.3s;
+    width: 100%;
+}
+.Export-csv:hover{
+    background-color: #fdfffc;
+}
+@media only screen and (min-width: 768px){
+    .Comparison-Flex{
+        width: 70vw;
+        left: 23vw;
+        top: 10vh;
+    }
+    .Export-csv{
+        width: 30%;
+    }
 }

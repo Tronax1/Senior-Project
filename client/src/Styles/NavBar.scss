@@ -13,6 +13,7 @@
     flex-direction: row;
     width: 100%;
     height: 100%;
+    justify-content: space-evenly;
 }
 .Links{
     text-decoration: none;
@@ -51,5 +52,6 @@
     }
     .Nav-Flex{
         flex-direction: column;
+        justify-content: unset;
     }
 }

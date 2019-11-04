@@ -1,10 +1,12 @@
+@import "/colors";
+
 .Form-Position{
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: 4vh;
-    left: 30vw;
-    width: 20vw;
+    top: 25vh;
+    left: 15vw;
+    width: 70vw;
 }
 .Checkboxes{
     height: 50vh;
@@ -13,19 +15,44 @@
 .Form-Position input{
     background: none;
     border-style: none;
-    background-color: #64f58d;
+    background-color: #8dc63f;
     color: black;
     font-size: 1.5rem;
-    border-radius: 5px;
+    border-radius: $radius;
     transition-duration: 0.3s;
     transition-delay: 0.05s;
+    border-bottom: $bottomBorder;
 }
 .Form-Position input:hover{
     background-color: #9dfff9;
+}
+.Submit-check{
+    width: 100%;
+    margin-top: 10px;
+    padding-left: 10px;
 }
 
 .user-stats{
     position: absolute;
     top: 10vh;
-    right: 20vw;
+    right: 35vw;
+}
+@media only screen and (min-width: 768px){
+    .Form-Position{
+        width: 30vw;
+        left: 30vw;
+        top: 4vh;
+    }
+    .user-stats{
+        position: absolute;
+        top: 10vh;
+        right: 20vw;
+    }
+    .Submit-check{
+        width: 70%;
+    }
+    .user-stats{
+        font-size: 1.5rem;
+        right: 15vw;
+    }
 }

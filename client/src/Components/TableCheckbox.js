@@ -68,13 +68,13 @@ class TableCheckbox extends Component {
             return (
                 <div>
                     <form className="Form-Position" onSubmit={this.handleSubmit}>
-                        <h2>All Fields</h2>
+                        <h2>Ticket Fields</h2>
                         <div className="Checkboxes">
                             {renderTables}
                         </div>
-                        <input type="text" name="comparisons" 
+                        <input className="Submit-check" type="text" name="comparisons" 
                         placeholder="Number of comparisons" onChange={this.handleComparisonChange} required/>
-                        <input type="submit" value="Submit" />
+                        <input className="Submit-check" type="submit" value="Submit" />
                     </form>
                     <div className="user-stats">
                         <h2>User: {this.props.tickets.user}</h2>

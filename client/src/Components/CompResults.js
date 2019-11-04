@@ -76,7 +76,7 @@ class CompResults extends Component {
                         <div className="All-Results">
                             {renderResults}
                         </div>
-                        <button onClick={()=>this.props.fetchCSV(this.props.user)}>export</button>     
+                        <button className="Export-csv" onClick={()=>this.props.fetchCSV(this.props.user)}>EXPORT CSV</button>     
                     </div>
                     <Modal show={this.state.show} hideModal={this.closeModal} compareData={this.state}/>
                 </>
