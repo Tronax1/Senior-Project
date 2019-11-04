@@ -29,7 +29,13 @@ router.get('/scores', async (req, res) =>{
 })
 
 router.get('/exportCSV', async (req, res) =>{
-    const allResults = await Result.find({user: req.query.user});
+    const startDate = new Date(req.query.dateOne);
+    const endDate = new Date(req.query.dateTwo);
+
+    const allResults = await Result.find({user: req.query.user, date:{
+        $gte: startDate,
+        $lt: endDate
+    }});
     const parser = new Parser(opts);
     const csv = parser.parse(allResults);
     fs.writeFileSync('data.csv', csv);
