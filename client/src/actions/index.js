@@ -66,8 +66,8 @@ export const fetchTickets = () => async dispatch =>{
 
 export const fetchCSV = (exportData) => async dispatch =>{
     const {user, dateOne, dateTwo, selectedExport} = exportData;
-    //window.open(`https://changegear-ticket-system.herokuapp.com/api/items/exportCSV?user=${user}&dateOne=${dateOne}&dateTwo=${dateTwo}`);
-    window.open(`http://localhost:5000/api/items/exportCSV?user=${user}&dateOne=${dateOne}&dateTwo=${dateTwo}&select=${selectedExport}`);
+    //window.open(`http://localhost:5000/api/items/exportCSV?user=${user}&dateOne=${dateOne}&dateTwo=${dateTwo}&select=${selectedExport}`);
+    window.open(`https://changegear-ticket-system.herokuapp.com/api/items/exportCSV?user=${user}&dateOne=${dateOne}&dateTwo=${dateTwo}&select=${selectedExport}`);
 }
 
 export const fetchAllResults = (user) => async dispatch =>{

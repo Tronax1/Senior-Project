@@ -36,7 +36,7 @@ class CompResults extends Component {
             User: '',
             dateOne: '',
             dateTwo: '',
-            selectedExport: ''
+            selectedExport: "Current"
         }
     }
     showModal(id1, id2, result, user){

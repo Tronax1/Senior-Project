@@ -31,8 +31,10 @@ router.get('/scores', async (req, res) =>{
 router.get('/exportCSV', async (req, res) =>{
     const startDate = new Date(req.query.dateOne);
     const endDate = new Date(req.query.dateTwo);
+    let selector = ""
+    selector += req.query.select
 
-    if(req.query.select === "Current"){
+    if(selector === "Current"){
         const allResults = await Result.find({
             user: req.query.user, date: {
                 $gte: startDate,
@@ -44,7 +46,7 @@ router.get('/exportCSV', async (req, res) =>{
         fs.writeFileSync('data.csv', csv);
         res.download(path.join(__dirname, '../../', 'data.csv'));
     }
-    if(req.query.select === "All"){
+    if(selector === "All"){
         const allResults = await Result.find({
              date: {
                 $gte: startDate,
