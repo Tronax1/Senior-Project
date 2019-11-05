@@ -32,14 +32,30 @@ router.get('/exportCSV', async (req, res) =>{
     const startDate = new Date(req.query.dateOne);
     const endDate = new Date(req.query.dateTwo);
 
-    const allResults = await Result.find({user: req.query.user, date:{
-        $gte: startDate,
-        $lt: endDate
-    }});
-    const parser = new Parser(opts);
-    const csv = parser.parse(allResults);
-    fs.writeFileSync('data.csv', csv);
-    res.download(path.join(__dirname, '../../' ,'data.csv'));
+    if(req.query.select === "Current"){
+        const allResults = await Result.find({
+            user: req.query.user, date: {
+                $gte: startDate,
+                $lt: endDate
+            }
+        });
+        const parser = new Parser(opts);
+        const csv = parser.parse(allResults);
+        fs.writeFileSync('data.csv', csv);
+        res.download(path.join(__dirname, '../../', 'data.csv'));
+    }
+    if(req.query.select === "All"){
+        const allResults = await Result.find({
+             date: {
+                $gte: startDate,
+                $lt: endDate
+            }
+        });
+        const parser = new Parser(opts);
+        const csv = parser.parse(allResults);
+        fs.writeFileSync('data.csv', csv);
+        res.download(path.join(__dirname, '../../', 'data.csv'));
+    }
 })
 
 router.get('/previousScores', async (req, res)=>{

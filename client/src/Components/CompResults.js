@@ -35,7 +35,8 @@ class CompResults extends Component {
             PreviousFields: '',
             User: '',
             dateOne: '',
-            dateTwo: ''
+            dateTwo: '',
+            selectedExport: ''
         }
     }
     showModal(id1, id2, result, user){
@@ -54,7 +55,13 @@ class CompResults extends Component {
     }
     handleSubmit(e){
         e.preventDefault();
-        this.props.fetchCSV(this.props.user, this.state.dateOne, this.state.dateTwo);
+        const exportData = {
+            user: this.props.user,
+            dateOne: this.state.dateOne,
+            dateTwo: this.state.dateTwo,
+            selectedExport: this.state.selectedExport
+        }
+        this.props.fetchCSV(exportData);
     }
     handleChange(e){
         this.setState({
@@ -90,9 +97,13 @@ class CompResults extends Component {
                             {renderResults}
                         </div>
                         <form onSubmit={this.handleSubmit}>
-                            <input type="date" name="dateOne" onChange={this.handleChange}/>
-                            <input type="date" name="dateTwo" onChange={this.handleChange}/>
-                            <input type="submit" className="Export-csv"/>    
+                            <input type="date" name="dateOne" onChange={this.handleChange} required/>
+                            <input type="date" name="dateTwo" onChange={this.handleChange} required/>
+                            <select onChange={this.handleChange} name="selectedExport" required>
+                                <option value="Current">Current User</option>
+                                <option value="All">All</option>
+                            </select>
+                            <input type="submit" className="Export-csv" value="Export CSV"/>    
                         </form>     
                     </div>
                     <Modal show={this.state.show} hideModal={this.closeModal} compareData={this.state}/>
