@@ -77,7 +77,7 @@ class TableCheckbox extends Component {
                         <input className="Submit-check" type="submit" value="Submit" />
                     </form>
                     <div className="user-stats">
-                        <h2>User: {this.props.tickets.user}</h2>
+                        <h2>Welcome {this.props.tickets.user}</h2>
                         <h5>Total Comparisons: {this.props.tickets.count.data}</h5>
                     </div>
                 </div>
