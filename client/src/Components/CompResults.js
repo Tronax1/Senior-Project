@@ -13,12 +13,12 @@ function Comparisons(props){
             <div>{props.Result}</div>
             <div>{props.User}</div>
             <div>{props.time}</div>
-            <button onClick={() => {
+            <button className="Edit-btn" onClick={() => {
                 props.fetchPrev(props.OID1, props.OID2, props.previousFields)
                 props.modalShow(props.OID1, props.OID2, props.previousFields, props.User)}
                 }>EDIT
             </button>
-            <button onClick={()=>{
+            <button className="Delete-btn" onClick={()=>{
                 props.deleteEntry(props.deleteId);
                 props.deletedFunction();
             }}>
