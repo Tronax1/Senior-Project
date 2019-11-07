@@ -1,3 +1,5 @@
+@import "/colors";
+
 .Modal-bg{
     background-color: black;
     z-index: 11;
@@ -19,6 +21,8 @@
     z-index: 12;
     border-radius: 8px;
     overflow: auto;
+    opacity: 0;
+    animation: fadeIn 0.4s ease-in 0.1s 1 forwards;
 }
 .Modal-Header{
     text-align: right;

@@ -3,7 +3,7 @@
 .Comparison-Element{
     display: flex;
     flex-direction: row;
-    width: 100%;
+    width: 160vw;
     height: 5vh;
     border-radius: 5px;
     margin-bottom: 7px;
@@ -30,7 +30,8 @@
 
 }
 .Comparison-Element > div {
-    width: 25vw;
+    width: 28vw;
+    font-size: 3vw;
 }
 .Comparison-Element > div:hover{
     cursor: default;
@@ -69,6 +70,9 @@
     border-bottom: $bottomBorder;
     border-radius: $radius;
     transition-duration: 0.3s;
+    width: 10vw;
+    font-size: 2vw;
+    height: 3vh;
 }
 .Edit-btn:hover{
     background-color: rgb(145, 255, 0);
@@ -80,6 +84,9 @@
     border-bottom: solid 4px #8B0000 !important;
     border-radius: $radius;
     transition-duration: 0.3s;
+    width: 15vw;
+    font-size: 2vw;
+    height: 3vh;
 }
 .Delete-btn:hover{
     background-color: pink;
@@ -92,5 +99,22 @@
     }
     .Export-csv{
         width: 30%;
+    }
+    .Comparison-Element > div {
+        font-size: 1.1vw;
+        margin-left: 1vw;
+    }
+    .Edit-btn{
+        font-size: 1vw;
+        width: 4vw;
+        height: 4vh;
+    }
+    .Delete-btn{
+        font-size: 1vw;
+        width: 5vw;
+        height: 4vh;
+    }
+    .Comparison-Element{
+        width: 100%;
     }
 }
