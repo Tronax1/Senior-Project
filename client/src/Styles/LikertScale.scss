@@ -1,5 +1,6 @@
+@import "/colors";
+
 .Likert-Scale{
-    
     height: 20vh;
     display: flex;
     flex-direction: row;
@@ -8,18 +9,32 @@
     margin-left: 2vw;
 }
 .Likert-Submit{
-    margin-left: 1vw;
-    background-color: green;
+    background-color: $lightGreen;
     border-style: none;
     color: white;
-    border-radius: 7px;
+    border-radius: $radius;
     height: 5vh;
-    width: 10vw;
-    font-size: 1rem;
+    width: 15vw;
+    font-size: 3vw;
     transition-duration: 0.3s;
     margin-top: 4vh;
+    font-size: 3vw;
+    border-bottom: $bottomBorder;
 }
 .Likert-Submit:hover{
     background-color: rgb(145, 255, 0);
     color: black;
+}
+.Likert-Scale p{
+    font-size: 3vw;
+}
+@media only screen and (min-width: 768px){
+    .Likert-Scale p{
+        font-size: 1rem;
+    }
+    .Likert-Submit{
+        font-size: 1rem;
+        margin-left: 1vw;
+        width: 10vw;
+    }
 }

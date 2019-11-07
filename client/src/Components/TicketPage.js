@@ -13,6 +13,7 @@ class TicketPage extends Component {
         }
         else{
             return (
+                <>
                 <div className="Ticket-Structure">
                     <div>
                         <LikertScale ticketOne={this.props.tickets.data[0]} 
@@ -27,6 +28,9 @@ class TicketPage extends Component {
                         <Ticket ticketData = {this.props.tickets.data[1]}/>
                     </div>             
                 </div>
+                <div className="Ticket-One"/>
+                <div className="Ticket-Two"/>
+                </>
             )
         }
     }
