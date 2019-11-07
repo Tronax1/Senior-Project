@@ -3,9 +3,20 @@
     flex-direction: column;
     justify-content: space-evenly;
     position: absolute;
-    left: 25vw;
+    left: 5vw;
+    top: 18vh;
+    width: 80vw;
 }
 .Ticket-Data{
     display: flex;
     flex-direction: row;
+    height: 60vh;
+    overflow: auto;
+}
+@media only screen and (min-width: 768px){
+        .Ticket-Structure{
+        left: 25vw;
+        width: 60vw;
+        top: 0;
+    }
 }

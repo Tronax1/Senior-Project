@@ -8,7 +8,7 @@ export default class TicketField extends Component {
         }
         return (
             <div>
-                <h2>{this.props.title}</h2>
+                <h2 className="Header-Field">{this.props.title}</h2>
                 <div className="Input-Field">
                     <p>{this.props.datas}</p>
                 </div>
