@@ -86,4 +86,7 @@ router.post('/', async (req, res) =>{
     res.json(addedEntry);
 })
 
+router.delete('/delete/:id', async (req, res)=>{
+    await Result.deleteOne({_id: req.params.id});
+})
 module.exports = router;

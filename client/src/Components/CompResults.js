@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux' 
-import { fetchResults, fetchPreviousSelected, fetchCSV } from '../actions'
+import { fetchResults, fetchPreviousSelected, fetchCSV, deleteResult } from '../actions'
 import Modal from './Modal'
 
 import '../Styles/CompResults.scss'
@@ -16,7 +16,14 @@ function Comparisons(props){
             <button onClick={() => {
                 props.fetchPrev(props.OID1, props.OID2, props.previousFields)
                 props.modalShow(props.OID1, props.OID2, props.previousFields, props.User)}
-                }>EDIT</button>
+                }>EDIT
+            </button>
+            <button onClick={()=>{
+                props.deleteEntry(props.deleteId);
+                props.deletedFunction();
+            }}>
+                DELETE
+            </button>
         </div>
     );
 }
@@ -28,6 +35,7 @@ class CompResults extends Component {
         this.closeModal = this.closeModal.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.updateDeleted = this.updateDeleted.bind(this);
         this.state = {
             show: false,
             OID1: '',
@@ -36,7 +44,8 @@ class CompResults extends Component {
             User: '',
             dateOne: '',
             dateTwo: '',
-            selectedExport: "Current"
+            selectedExport: "Current",
+            total: []
         }
     }
     showModal(id1, id2, result, user){
@@ -68,21 +77,32 @@ class CompResults extends Component {
             [e.target.name]: e.target.value
         })
     }
-    componentDidMount(){
+    async updateDeleted(){
         const User = {
             user: this.props.user
         }
-        this.props.fetchResults(User);
+        await this.props.fetchResults(User);
+        if (this.props.comparisons != null) {
+            const allResults = this.props.comparisons.data;
+            this.setState({
+                total: allResults
+            });
+        }
+    }
+    async componentDidMount(){
+        const User = {
+            user: this.props.user
+        }
+        await this.props.fetchResults(User);
+        if (this.props.comparisons != null) {
+            const allResults = this.props.comparisons.data;
+            this.setState({
+                total: allResults
+            });
+        }
     }
     render() {
-        if(this.props.comparisons != null){
-            const allResults = this.props.comparisons.data;
-            const renderResults = allResults.map((items, i) => (
-                <Comparisons key={i} OID1={items.ID1} OID2={items.ID2}
-                    User={items.user} Result={items.result} time={items.date} 
-                    modalShow={this.showModal} previousFields={items.selectedFields}
-                    fetchPrev={this.props.fetchPreviousSelected}/>
-            ))
+        
             return (
                 <>
                     <div className="Comparison-Flex">
@@ -94,7 +114,13 @@ class CompResults extends Component {
                             <div>Time</div>
                         </div>
                         <div className="All-Results">
-                            {renderResults}
+                            {this.state.total.map((items, i) => (
+                                <Comparisons key={i} OID1={items.ID1} OID2={items.ID2}
+                                    User={items.user} Result={items.result} time={items.date}
+                                    modalShow={this.showModal} previousFields={items.selectedFields}
+                                    fetchPrev={this.props.fetchPreviousSelected} deleteId={items._id}
+                                    deleteEntry={this.props.deleteResult} deletedFunction={this.updateDeleted}/>
+                            ))}
                         </div>
                         <form onSubmit={this.handleSubmit}>
                             <input type="date" name="dateOne" onChange={this.handleChange} required/>
@@ -109,13 +135,9 @@ class CompResults extends Component {
                     <Modal show={this.state.show} hideModal={this.closeModal} compareData={this.state}/>
                 </>
             )
-        }
-        else{
-            return null;
-        }
     }
 }
 function mapStatetoProps({user, comparisons}){
     return {user, comparisons};
 }
-export default connect(mapStatetoProps, { fetchResults, fetchPreviousSelected, fetchCSV})(CompResults);
+export default connect(mapStatetoProps, { fetchResults, fetchPreviousSelected, fetchCSV, deleteResult})(CompResults);

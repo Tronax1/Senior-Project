@@ -103,6 +103,9 @@ export const fetchPreviousSelected = (ticket1, ticket2, fields) => async dispatc
         payload: PreviousSelected
     });
 }
+export const deleteResult = id => async dispatch=>{
+    await axios.delete(`/api/items/delete/${id}`);
+}
 export const getUser = (user) => dispatch =>{
     userName.push(user);
 }
