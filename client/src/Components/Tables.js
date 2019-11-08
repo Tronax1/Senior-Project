@@ -97,7 +97,7 @@ const allTables = {
     Notes: false,
     Description: false,
     TimeFromSubmitToClose: false,
-    comparisons: ""
+    comparisons: "",
 }
 
 export default allTables;

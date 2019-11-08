@@ -10,7 +10,7 @@ import '../Styles/TableCheckbox.scss'
 function Checkbox(props){
     return(
         <div>
-            <input  className="Blue-Check" type="checkbox" id={props.name} name={props.name} value={true} onChange={props.Change}/>
+            <input  className="Blue-Check" type="checkbox" id={props.name} name={props.name} onChange={props.Change}/>
             <label htmlFor={props.name}>{props.name}</label>
         </div>
     );
@@ -26,7 +26,7 @@ class TableCheckbox extends Component {
     }
     handleChange(e){
         this.setState({
-            [e.target.name]: true
+            [e.target.name]: e.target.checked,
         })
     }
     handleComparisonChange(e){
@@ -40,7 +40,7 @@ class TableCheckbox extends Component {
         const tableKeys = Object.keys(selectedTables);
         const tableValues = Object.values(selectedTables);
         let dbSelectedProperties = "";
-        for(let i = 0; i < tableKeys.length; i++){
+        for(let i = 0; i < tableKeys.length - 1; i++){
             if(tableValues[i] === true){
                 dbSelectedProperties += tableKeys[i];
                 dbSelectedProperties += " ";
