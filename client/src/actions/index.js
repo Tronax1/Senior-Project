@@ -45,10 +45,10 @@ export const getTables = (tables) => dispatch =>{
     })
 }
 
-export const fetchResults = (user) => async dispatch =>{
+export const fetchResults = (User) => async dispatch =>{
     const comparisons = await axios.get('/api/items/scores', {
         params: {
-            user: user.user
+            user: User
         }
     });
     dispatch({
@@ -103,8 +103,17 @@ export const fetchPreviousSelected = (ticket1, ticket2, fields) => async dispatc
         payload: PreviousSelected
     });
 }
-export const deleteResult = id => async dispatch=>{
+export const deleteResult = (id, User) => async dispatch=>{
     await axios.delete(`/api/items/delete/${id}`);
+    const comparisons = await axios.get('/api/items/scores', {
+        params: {
+            user: User
+        }
+    });
+    dispatch({
+        type: GET_RESULTS,
+        payload: comparisons
+    }) 
 }
 export const getUser = (user) => dispatch =>{
     userName.push(user);

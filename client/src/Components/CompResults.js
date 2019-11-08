@@ -21,8 +21,7 @@ function Comparisons(props){
                 }>EDIT
                 </button>
                 <button className="Delete-btn" onClick={() => {
-                    props.deleteEntry(props.deleteId);
-                    props.deletedFunction();
+                    props.deleteEntry(props.deleteId, props.User);
                 }}>
                     DELETE
                 </button>
@@ -38,7 +37,6 @@ class CompResults extends Component {
         this.closeModal = this.closeModal.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
-        this.updateDeleted = this.updateDeleted.bind(this);
         this.state = {
             show: false,
             OID1: '',
@@ -80,27 +78,11 @@ class CompResults extends Component {
             [e.target.name]: e.target.value
         })
     }
-    async updateDeleted(){
-        const User = {
-            user: this.props.user
-        }
-        await this.props.fetchResults(User);
+     componentDidMount(){
+        this.props.fetchResults(this.props.user);
         if (this.props.comparisons != null) {
-            const allResults = this.props.comparisons.data;
             this.setState({
-                total: allResults
-            });
-        }
-    }
-    async componentDidMount(){
-        const User = {
-            user: this.props.user
-        }
-        await this.props.fetchResults(User);
-        if (this.props.comparisons != null) {
-            const allResults = this.props.comparisons.data;
-            this.setState({
-                total: allResults
+                total: this.props.comparisons.data
             });
         }
     }
@@ -122,7 +104,7 @@ class CompResults extends Component {
                                     User={items.user} Result={items.result} time={items.date}
                                     modalShow={this.showModal} previousFields={items.selectedFields}
                                     fetchPrev={this.props.fetchPreviousSelected} deleteId={items._id}
-                                    deleteEntry={this.props.deleteResult} deletedFunction={this.updateDeleted}/>
+                                    deleteEntry={this.props.deleteResult}/>
                             ))}
                         </div>
                         <form onSubmit={this.handleSubmit}>
