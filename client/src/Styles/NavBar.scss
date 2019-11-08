@@ -7,6 +7,7 @@
     width: 100vw;
     background-color: $raisinBlack;
     z-index: 10;
+    box-shadow: 3px 3px 10px #02010080;
 }
 .Nav-Flex{
     display: flex;
@@ -41,6 +42,13 @@
     transition-delay: 0.05s;
     background-color: #db5375;
 }
+.Nav-Flex > div{
+    padding-top: 30px;
+    padding-bottom: 30px;
+    text-align: center;
+    color: gray;
+    display: none;
+}
 .Nav-Flex button:hover{
     background-color: #ec9192;
 
@@ -53,5 +61,8 @@
     .Nav-Flex{
         flex-direction: column;
         justify-content: unset;
+    }
+    .Nav-Flex > div{
+        display: initial;
     }
 }

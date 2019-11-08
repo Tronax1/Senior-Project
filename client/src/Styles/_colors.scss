@@ -18,5 +18,13 @@ $bottomBorder: solid 4px $darkGreen !important;
         opacity: 1;
     }
 }
+@keyframes fadeInLowerOpacity{
+    0% {
+        opacity: 0;
+    }
+    100%{
+        opacity: 0.5;
+    }
+}
 //Font
 $roboto: 'Roboto', sans-serif;

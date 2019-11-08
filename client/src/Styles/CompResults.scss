@@ -43,6 +43,11 @@
     position: absolute;
     left: 10vw;
     top: 20vh;
+    opacity: 0;
+    animation: fadeIn 0.4s ease-in 0.1s 1 forwards;
+    background-color: white;
+    border-radius: $radius;
+    box-shadow: 3px 3px 10px #02010080;
 }
 .All-Results{
     height: 70vh;

@@ -9,7 +9,11 @@ import '../Styles/TicketPage.scss'
 class TicketPage extends Component {
     render() {
         if(this.props.tickets == null || this.props.compCount === 0){
-            return null;
+            return (
+                <div className="Default-ticket-msg">
+                    <p>No Available Selections</p>
+                </div>
+            );
         }
         else{
             return (
