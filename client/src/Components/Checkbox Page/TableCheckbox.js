@@ -1,20 +1,12 @@
 import React, { Component } from 'react'
-import Tables from './Tables'
-import tableNames from './tableNames'
+import Tables from '../Ticket Tables/Tables'
+import tableNames from '../Ticket Tables/tableNames'
 import {withRouter} from 'react-router-dom'
 import { connect } from 'react-redux'
-import { getTables, fetchTickets, fetchAllResults, setCounter, addSelectedTables } from '../actions'
+import { getTables, fetchTickets, fetchAllResults, setCounter, addSelectedTables } from '../../actions'
+import Checkbox from './Checkbox'
 
-import '../Styles/TableCheckbox.scss'
-
-function Checkbox(props){
-    return(
-        <div>
-            <input  className="Blue-Check" type="checkbox" id={props.name} name={props.name} onChange={props.Change}/>
-            <label htmlFor={props.name}>{props.name}</label>
-        </div>
-    );
-}
+import '../../Styles/TableCheckbox.scss'
 
 class TableCheckbox extends Component {
     constructor(props){

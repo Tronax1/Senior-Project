@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
 import {Switch, Route, Redirect} from 'react-router-dom';
-import Login from './Components/Login'
-import TicketPage from './Components/TicketPage'
+import Login from './Components/Login/Login'
+import TicketPage from './Components/Ticket Page/TicketPage'
 import NavBar from './Components/NavBar/NavBar'
-import TableCheckbox from './Components/TableCheckbox'
-import CompResults from './Components/CompResults'
+import TableCheckbox from './Components/Checkbox Page/TableCheckbox'
+import CompResults from './Components/Result Page/CompResults'
 import { connect } from 'react-redux'
 import { fetchUser } from './actions'
 

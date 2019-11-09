@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import {addResult, fetchTickets, fetchResults} from '../actions'
+import {addResult, fetchTickets, fetchResults} from '../../actions'
 
 class ModalForm extends Component {
     constructor(props){
@@ -30,7 +30,7 @@ class ModalForm extends Component {
                 result: this.state.Scale,
                 selectedFields: PreviousFields
             }
-            this.props.addResult(result);
+            this.props.addResult(result, User);
             this.props.removeModal();
             this.setState({
                 Scale: ''

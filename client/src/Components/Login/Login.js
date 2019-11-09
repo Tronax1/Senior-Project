@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { getUser, fetchUser } from '../actions'
+import { getUser, fetchUser } from '../../actions'
 import { withRouter } from 'react-router-dom'
 
-import '../Styles/Login.scss'
+import '../../Styles/Login.scss'
 
 class Login extends Component {
     constructor(props){

@@ -2,9 +2,8 @@ import React, { Component } from 'react'
 import LikertScale from "./LikertScale"
 import Ticket from "./Ticket"
 import { connect } from "react-redux"
-import '../Styles/TicketPage.scss'
 
-
+import '../../Styles/TicketPage.scss'
 
 class TicketPage extends Component {
     render() {

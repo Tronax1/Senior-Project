@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import TicketField from './TicketField'
 import { connect } from 'react-redux'
-import tableNames from './tableNames'
+import tableNames from '../Ticket Tables/tableNames'
 
-import '../Styles/Ticket.scss'
+import '../../Styles/Ticket.scss'
 
 class Ticket extends Component {
     render() {

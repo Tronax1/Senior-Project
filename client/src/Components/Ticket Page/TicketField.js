@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import '../Styles/TicketField.scss'
+
+import '../../Styles/TicketField.scss'
 
 export default class TicketField extends Component {
     render() {

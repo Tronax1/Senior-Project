@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { addResult, fetchTickets, decreaseCount } from '../actions'
-import '../Styles/LikertScale.scss'
+import { addResult, fetchTickets, decreaseCount } from '../../actions'
+
+import '../../Styles/LikertScale.scss'
 
 class LikertScale extends Component {
     constructor(props){
@@ -30,7 +31,7 @@ class LikertScale extends Component {
                 result: this.state.Scale,
                 selectedFields: this.props.selectedTables
             }
-            this.props.addResult(result);
+            this.props.addResult(result, this.props.user);
             this.props.fetchTickets();
             this.props.decreaseCount(this.props.compCount);
         }

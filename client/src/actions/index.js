@@ -81,8 +81,17 @@ export const fetchAllResults = (user) => async dispatch =>{
         payload: count
     })
 }
-export const addResult = (item) => async dispatch =>{
+export const addResult = (item, User) => async dispatch =>{
     await axios.post('/api/results', item);
+    const comparisons = await axios.get('/api/scores', {
+        params: {
+            user: User
+        }
+    });
+    dispatch({
+        type: GET_RESULTS,
+        payload: comparisons
+    })
 }
 export const addSelectedTables = (tableNames) => dispatch =>{
     dispatch({
