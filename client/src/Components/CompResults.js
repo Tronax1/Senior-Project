@@ -77,18 +77,9 @@ class CompResults extends Component {
             [e.target.name]: e.target.value
         })
     }
-    async componentDidMount(){
-        const User = {
-            user: this.props.user
-        }
-        await this.props.fetchResults(User);
-        if (this.props.comparisons != null) {
-            const allResults = this.props.comparisons.data;
-            this.setState({
-                total: allResults
-            });
-            console.log(this.props.comparisons.data)
-        }
+    componentDidMount(){
+        const {user, fetchResults} = this.props;
+        fetchResults(user);
     }
     render() {
         

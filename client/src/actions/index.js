@@ -45,10 +45,10 @@ export const getTables = (tables) => dispatch =>{
     })
 }
 
-export const fetchResults = (user) => async dispatch =>{
+export const fetchResults = (User) => async dispatch =>{
     const comparisons = await axios.get('/api/scores', {
         params: {
-            user: user.user
+            user: User
         }
     });
     dispatch({

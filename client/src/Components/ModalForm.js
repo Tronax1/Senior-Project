@@ -37,13 +37,6 @@ class ModalForm extends Component {
             })
         }
     }
-    componentWillUnmount(){
-        const {User} = this.props.resultData
-        const user = {
-            user: User
-        }
-        this.props.fetchResults(user);
-    }
     render() {
         return (
             <div>
