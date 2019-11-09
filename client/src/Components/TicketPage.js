@@ -33,7 +33,7 @@ class TicketPage extends Component {
                     </div>             
                 </div>
                 <div className="Ticket-One"/>
-                <div className="Ticket-Two"/>
+                <div className="Ticket-Two"/>*
                 </>
             )
         }

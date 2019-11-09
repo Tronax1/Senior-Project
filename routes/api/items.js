@@ -10,7 +10,7 @@ const opts = {fields};
 const Ticket = require('../../Model/TicketSchema');
 const Result = require('../../Model/LikertSchema');
 
-router.get('/', async (req, res) =>{
+router.get('/tickets', async (req, res) =>{
     const count = await Ticket.countDocuments();
     const random1 = Math.floor(Math.random() * count);
     const item1 = await Ticket.findOne().skip(random1); 
@@ -69,12 +69,12 @@ router.get('/previousScores', async (req, res)=>{
     ]
     res.json(selectedTickets);
 })
-router.get('/total', async (req, res) =>{
+router.get('/results/total', async (req, res) =>{
     const count = await Result.countDocuments({user: req.query.user});
     res.json(count);
 })
 
-router.post('/', async (req, res) =>{
+router.post('/results', async (req, res) =>{
     const newResult = new Result({
         ID1: req.body.ID1,
         ID2: req.body.ID2,
@@ -86,7 +86,8 @@ router.post('/', async (req, res) =>{
     res.json(addedEntry);
 })
 
-router.delete('/delete/:id', async (req, res)=>{
+router.delete('/results/delete/:id', async (req, res)=>{
     await Result.deleteOne({_id: req.params.id});
+    res.send("ok");
 })
 module.exports = router;

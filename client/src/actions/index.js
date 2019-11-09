@@ -46,7 +46,7 @@ export const getTables = (tables) => dispatch =>{
 }
 
 export const fetchResults = (user) => async dispatch =>{
-    const comparisons = await axios.get('/api/items/scores', {
+    const comparisons = await axios.get('/api/scores', {
         params: {
             user: user.user
         }
@@ -57,7 +57,7 @@ export const fetchResults = (user) => async dispatch =>{
     })
 }
 export const fetchTickets = () => async dispatch =>{
-    const tickets = await axios.get('/api/items');
+    const tickets = await axios.get('/api/tickets');
     dispatch({
         type: GET_TICKETS,
         payload: tickets
@@ -67,11 +67,11 @@ export const fetchTickets = () => async dispatch =>{
 export const fetchCSV = (exportData) => async dispatch =>{
     const {user, dateOne, dateTwo, selectedExport} = exportData;
     //window.open(`http://localhost:5000/api/items/exportCSV?user=${user}&dateOne=${dateOne}&dateTwo=${dateTwo}&select=${selectedExport}`);
-    window.open(`https://changegear-ticket-system.herokuapp.com/api/items/exportCSV?user=${user}&dateOne=${dateOne}&dateTwo=${dateTwo}&select=${selectedExport}`);
+    window.open(`https://changegear-ticket-system.herokuapp.com/api/exportCSV?user=${user}&dateOne=${dateOne}&dateTwo=${dateTwo}&select=${selectedExport}`);
 }
 
 export const fetchAllResults = (user) => async dispatch =>{
-    const count = await axios.get('/api/items/total', {
+    const count = await axios.get('/api/results/total', {
         params: {
             user: user
         }
@@ -82,7 +82,7 @@ export const fetchAllResults = (user) => async dispatch =>{
     })
 }
 export const addResult = (item) => async dispatch =>{
-    await axios.post('/api/items', item);
+    await axios.post('/api/results', item);
 }
 export const addSelectedTables = (tableNames) => dispatch =>{
     dispatch({
@@ -91,7 +91,7 @@ export const addSelectedTables = (tableNames) => dispatch =>{
     });
 }
 export const fetchPreviousSelected = (ticket1, ticket2, fields) => async dispatch =>{
-    const PreviousSelected = await axios.get('/api/items/previousScores', {
+    const PreviousSelected = await axios.get('/api/previousScores', {
         params:{
             OID1: ticket1,
             OID2: ticket2,
@@ -103,8 +103,17 @@ export const fetchPreviousSelected = (ticket1, ticket2, fields) => async dispatc
         payload: PreviousSelected
     });
 }
-export const deleteResult = id => async dispatch=>{
-    await axios.delete(`/api/items/delete/${id}`);
+export const deleteResult = (id, User) => async dispatch=>{
+    await axios.delete(`/api/results/delete/${id}`);
+    const updatedResults = await axios.get('/api/scores', {
+             params: {
+                 user: User
+             }
+         })
+    dispatch({
+        type: GET_RESULTS,
+        payload: updatedResults
+    })
 }
 export const getUser = (user) => dispatch =>{
     userName.push(user);

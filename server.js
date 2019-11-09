@@ -18,7 +18,7 @@ db.once('open', ()=> console.log('Connected to the database'));
 
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
-app.use('/api/items', items);
+app.use('/api', items);
 
 if (process.env.NODE_ENV === 'production') {
     // Exprees will serve up production assets

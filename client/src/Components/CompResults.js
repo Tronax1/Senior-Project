@@ -21,8 +21,7 @@ function Comparisons(props){
                 }>EDIT
                 </button>
                 <button className="Delete-btn" onClick={() => {
-                    props.deleteEntry(props.deleteId);
-                    props.deletedFunction();
+                    props.deleteEntry(props.deleteId, props.User);
                 }}>
                     DELETE
                 </button>
@@ -38,7 +37,6 @@ class CompResults extends Component {
         this.closeModal = this.closeModal.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
-        this.updateDeleted = this.updateDeleted.bind(this);
         this.state = {
             show: false,
             OID1: '',
@@ -48,7 +46,6 @@ class CompResults extends Component {
             dateOne: '',
             dateTwo: '',
             selectedExport: "Current",
-            total: []
         }
     }
     showModal(id1, id2, result, user){
@@ -80,18 +77,6 @@ class CompResults extends Component {
             [e.target.name]: e.target.value
         })
     }
-    async updateDeleted(){
-        const User = {
-            user: this.props.user
-        }
-        await this.props.fetchResults(User);
-        if (this.props.comparisons != null) {
-            const allResults = this.props.comparisons.data;
-            this.setState({
-                total: allResults
-            });
-        }
-    }
     async componentDidMount(){
         const User = {
             user: this.props.user
@@ -102,42 +87,48 @@ class CompResults extends Component {
             this.setState({
                 total: allResults
             });
+            console.log(this.props.comparisons.data)
         }
     }
     render() {
         
-            return (
-                <>
-                    <div className="Comparison-Flex">
-                        <div className="Top-Row">
-                            <div>ID1</div>
-                            <div>ID2</div>
-                            <div>Result</div>
-                            <div>User</div>
-                            <div>Time</div>
+            if(this.props.comparisons === null){
+                return null;
+            }
+            else{
+                return (
+                    <>
+                        <div className="Comparison-Flex">
+                            <div className="Top-Row">
+                                <div>ID1</div>
+                                <div>ID2</div>
+                                <div>Result</div>
+                                <div>User</div>
+                                <div>Time</div>
+                            </div>
+                            <div className="All-Results">
+                                {this.props.comparisons.data.map((items, i) => (
+                                    <Comparisons key={i} OID1={items.ID1} OID2={items.ID2}
+                                        User={items.user} Result={items.result} time={items.date}
+                                        modalShow={this.showModal} previousFields={items.selectedFields}
+                                        fetchPrev={this.props.fetchPreviousSelected} deleteId={items._id}
+                                        deleteEntry={this.props.deleteResult}/>
+                                ))}
+                            </div>
+                            <form onSubmit={this.handleSubmit}>
+                                <input type="date" name="dateOne" onChange={this.handleChange} required />
+                                <input type="date" name="dateTwo" onChange={this.handleChange} required />
+                                <select onChange={this.handleChange} name="selectedExport" required>
+                                    <option value="Current">Current User</option>
+                                    <option value="All">All</option>
+                                </select>
+                                <input type="submit" className="Export-csv" value="Export CSV" />
+                            </form>
                         </div>
-                        <div className="All-Results">
-                            {this.state.total.map((items, i) => (
-                                <Comparisons key={i} OID1={items.ID1} OID2={items.ID2}
-                                    User={items.user} Result={items.result} time={items.date}
-                                    modalShow={this.showModal} previousFields={items.selectedFields}
-                                    fetchPrev={this.props.fetchPreviousSelected} deleteId={items._id}
-                                    deleteEntry={this.props.deleteResult} deletedFunction={this.updateDeleted}/>
-                            ))}
-                        </div>
-                        <form onSubmit={this.handleSubmit}>
-                            <input type="date" name="dateOne" onChange={this.handleChange} required/>
-                            <input type="date" name="dateTwo" onChange={this.handleChange} required/>
-                            <select onChange={this.handleChange} name="selectedExport" required>
-                                <option value="Current">Current User</option>
-                                <option value="All">All</option>
-                            </select>
-                            <input type="submit" className="Export-csv" value="Export CSV"/>    
-                        </form>     
-                    </div>
-                    <Modal show={this.state.show} hideModal={this.closeModal} compareData={this.state}/>
-                </>
-            )
+                        <Modal show={this.state.show} hideModal={this.closeModal} compareData={this.state} />
+                    </>
+                )
+            }
     }
 }
 function mapStatetoProps({user, comparisons}){
