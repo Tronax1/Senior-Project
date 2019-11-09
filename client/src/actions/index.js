@@ -39,6 +39,7 @@ export const decreaseCount = (count) => dispatch =>{
     })
 }
 export const getTables = (tables) => dispatch =>{
+    delete tables.comparisons;
     dispatch({
         type: GET_TABLES,
         payload: tables

@@ -96,7 +96,7 @@ const tableNames = [
     "GCRecord",
     "Notes",
     "Description",
-    "TimeFromSubmitToClose",
+    "TimeFromSubmitToClose"
 ]
 
 export default tableNames;
