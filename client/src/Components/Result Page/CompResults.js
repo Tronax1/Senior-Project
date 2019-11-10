@@ -66,14 +66,15 @@ class CompResults extends Component {
                 return (
                     <>
                         <div className="Comparison-Flex">
-                            <div className="Top-Row">
-                                <div>ID1</div>
-                                <div>ID2</div>
-                                <div>Result</div>
-                                <div>User</div>
-                                <div>Time</div>
-                            </div>
                             <div className="All-Results">
+                                <div className="Top-Row">
+                                    <div>ID1</div>
+                                    <div>ID2</div>
+                                    <div>Result</div>
+                                    <div>User</div>
+                                    <div>Time</div>
+                                    <div/>
+                                </div>
                                 {this.props.comparisons.data.map((items, i) => (
                                     <Comparisons key={i} OID1={items.ID1} OID2={items.ID2}
                                         User={items.user} Result={items.result} time={items.date}
@@ -87,7 +88,7 @@ class CompResults extends Component {
                                 <input type="date" name="dateTwo" onChange={this.handleChange} required />
                                 <select onChange={this.handleChange} name="selectedExport" required>
                                     <option value="Current">Current User</option>
-                                    <option value="All">All</option>
+                                    <option value="All">All Users</option>
                                 </select>
                                 <input type="submit" className="Export-csv" value="Export CSV" />
                             </form>

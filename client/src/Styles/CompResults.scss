@@ -13,14 +13,15 @@
 .Top-Row{
     display: flex;
     flex-direction: row;
-    width: 100%;
+    width: 160vw;
     height: 5vh;
     margin-bottom: 10px;
     border-radius: 5px;
-    background-color: gray;
+    background-color: black;
+    color: white;
 }
 .Top-Row > div{
-    width: 25vw;
+    width: 30vw;
 }
 .Top-Row > div:hover{
     cursor: default;
@@ -120,6 +121,9 @@
         height: 4vh;
     }
     .Comparison-Element{
+        width: 100%;
+    }
+    .Top-Row{
         width: 100%;
     }
 }
