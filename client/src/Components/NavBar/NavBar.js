@@ -14,9 +14,9 @@ class NavBar extends Component {
         return (
             <div className="NavBar">
                 <div className="Nav-Flex">
-                    <NavLink className="Links" to="/User/Tickets">Tickets</NavLink>
-                    <NavLink className="Links" to="/User/TableSelection">Checkbox</NavLink>
-                    <NavLink className="Links" to="/User/Results">Comparisons</NavLink>
+                    <NavLink activeClassName="active-selected" className="Links" to="/User/Tickets">Tickets</NavLink>
+                    <NavLink activeClassName="active-selected" className="Links" to="/User/TableSelection">Checkbox</NavLink>
+                    <NavLink activeClassName="active-selected" className="Links" to="/User/Results">Comparisons</NavLink>
                     <button onClick={()=>{
                         this.props.logOut();
                         this.props.fetchUser();
