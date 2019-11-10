@@ -19,6 +19,9 @@
     border-radius: 5px;
     background-color: black;
     color: white;
+    padding-top: 8px;
+    padding-left: 1vw;
+    font-size: 3vw;
 }
 .Top-Row > div{
     width: 30vw;
@@ -61,9 +64,9 @@
     background-color: $lightGreen;
     border-bottom: $bottomBorder;
     border-radius: $radius;
-    font-size: 1.5rem;
+    font-size: 3vw;
     transition-duration: 0.3s;
-    width: 100%;
+    width: 40%;
     margin-top: 10px;
 }
 .Export-csv:hover{
@@ -97,6 +100,17 @@
 .Delete-btn:hover{
     background-color: pink;
 }
+.date-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding-bottom: 2vh;
+    width: 70%;
+    margin-left: 4vw;
+}
+.date-form > span{
+    font-size: 3vw;
+}
 @media only screen and (min-width: 768px){
     .Comparison-Flex{
         width: 70vw;
@@ -105,6 +119,7 @@
     }
     .Export-csv{
         width: 30%;
+        font-size: 1.5vw;
     }
     .Comparison-Element > div {
         font-size: 1.1vw;
@@ -124,6 +139,14 @@
         width: 100%;
     }
     .Top-Row{
-        width: 100%;
+        width: 98.5%;
+        font-size: 1vw;
+    }
+    .date-form{
+        flex-direction: row;
+    }
+    .date-form > span{
+        font-size: 1vw;
+        padding-top: 1.5vh;
     }
 }

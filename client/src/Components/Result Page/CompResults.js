@@ -83,8 +83,9 @@ class CompResults extends Component {
                                         deleteEntry={this.props.deleteResult}/>
                                 ))}
                             </div>
-                            <form onSubmit={this.handleSubmit}>
+                            <form className="date-form" onSubmit={this.handleSubmit}>
                                 <input type="date" name="dateOne" onChange={this.handleChange} required />
+                                <span>to</span>
                                 <input type="date" name="dateTwo" onChange={this.handleChange} required />
                                 <select onChange={this.handleChange} name="selectedExport" required>
                                     <option value="Current">Current User</option>

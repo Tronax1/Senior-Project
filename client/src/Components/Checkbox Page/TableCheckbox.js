@@ -65,7 +65,7 @@ class TableCheckbox extends Component {
                             {renderTables}
                         </div>
                         <input className="Submit-check" type="text" name="comparisons" 
-                        placeholder="Number of comparisons" onChange={this.handleComparisonChange} required/>
+                        placeholder="# of comparisons" onChange={this.handleComparisonChange} required/>
                         <input className="Submit-check" type="submit" value="Submit" />
                     </form>
                     <div className="user-stats">
