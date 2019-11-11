@@ -4,10 +4,15 @@
     height: 20vh;
     display: flex;
     flex-direction: row;
+    
+    label{
+        margin-left: 2vw;
+    }
+    p{
+        font-size: 3vw;
+    }
 }
-.Likert-Scale label{
-    margin-left: 2vw;
-}
+
 .Likert-Submit{
     background-color: $lightGreen;
     border-style: none;
@@ -20,17 +25,17 @@
     margin-top: 4vh;
     font-size: 3vw;
     border-bottom: $bottomBorder;
-}
-.Likert-Submit:hover{
-    background-color: rgb(145, 255, 0);
-    color: black;
-}
-.Likert-Scale p{
-    font-size: 3vw;
+
+    &:hover{
+        background-color: rgb(145, 255, 0);
+        color: black;
+    }
 }
 @media only screen and (min-width: 768px){
-    .Likert-Scale p{
-        font-size: 1rem;
+    .Likert-Scale{
+        p{
+            font-size: 1rem;
+        } 
     }
     .Likert-Submit{
         font-size: 1rem;

@@ -9,9 +9,10 @@
     left: 3vw;
     opacity: 0;
     animation: fadeInLowerOpacity 0.4s ease-in 0.1s 1 forwards;
-}
-.Default-ticket-msg:hover{
-    cursor: default;
+
+    &:hover{
+        cursor: default;
+    }
 }
 .Ticket-Structure{
     display: flex;

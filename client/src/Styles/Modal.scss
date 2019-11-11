@@ -30,10 +30,11 @@
 .Close-btn{
     font-size: 2rem;
     margin-right: 13px;
-}
-.Close-btn:hover{
-    color: red;
-    cursor: default;
+
+    &:hover{
+        color: red;
+        cursor: default;
+    }
 }
 .Modal-Body{
     display: flex;

@@ -16,25 +16,27 @@
     z-index: 2;
     opacity: 0;
     animation: fadeIn 0.4s ease-in 0.2s 1 forwards;
-}
-.Login-Form input{
-    margin-top: 10px;
-    height: 6vh;
-    font-size: 120%;
-    text-align: center;
-    border-radius: 6px;
-}
-.Login-Form h1{
-    text-align: center;
+
+    input{
+        margin-top: 10px;
+        height: 6vh;
+        font-size: 120%;
+        text-align: center;
+        border-radius: 6px;
+    }
+    h1{
+        text-align: center;
+    }
 }
 .Submit-btn{
     background-color: $lightGreen;
     border-bottom: $bottomBorder;
     border-style: none;
     transition-duration: 0.3s;
-}
-.Submit-btn:hover{
-    background-color: #fdfffc;
+
+    &:hover{
+        background-color: #fdfffc;
+    }
 }
 body{
     background-color: #d7e0e9;

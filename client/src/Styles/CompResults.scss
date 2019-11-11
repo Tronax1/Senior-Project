@@ -9,6 +9,10 @@
     margin-bottom: 7px;
     transition-duration: 0.3s;
     transition-delay: 0.01s;
+
+    &:hover{
+        background-color: $specialOrange;
+    }
 }
 .Top-Row{
     display: flex;
@@ -25,20 +29,16 @@
 }
 .Top-Row > div{
     width: 30vw;
-}
-.Top-Row > div:hover{
-    cursor: default;
-}
-.Comparison-Element:hover{
-    background-color: $specialOrange;
-
+    &:hover{
+        cursor: default;
+    }
 }
 .Comparison-Element > div {
     width: 28vw;
     font-size: 3vw;
-}
-.Comparison-Element > div:hover{
-    cursor: default;
+    &:hover{
+        cursor: default;
+    }
 }
 .Comparison-Flex{
     display: flex;
@@ -68,9 +68,10 @@
     transition-duration: 0.3s;
     width: 40%;
     margin-top: 10px;
-}
-.Export-csv:hover{
-    background-color: #fdfffc;
+
+    &:hover{
+        background-color: #fdfffc;
+    }
 }
 .Edit-btn{
     background: none;
@@ -82,9 +83,10 @@
     width: 10vw;
     font-size: 2vw;
     height: 3vh;
-}
-.Edit-btn:hover{
-    background-color: rgb(145, 255, 0);
+
+    &:hover{
+        background-color: rgb(145, 255, 0);
+    }
 }
 .Delete-btn{
     background: none;
@@ -96,9 +98,10 @@
     width: 15vw;
     font-size: 2vw;
     height: 3vh;
-}
-.Delete-btn:hover{
-    background-color: pink;
+
+    &:hover{
+        background-color: pink;
+    }
 }
 .date-form{
     display: flex;
