@@ -29,6 +29,8 @@
     &:hover{
         background-color: rgb(145, 255, 0);
         color: black;
+        box-shadow: 5px 10px 8px rgb(44, 43, 43);
+        cursor: pointer;
     }
 }
 @media only screen and (min-width: 768px){

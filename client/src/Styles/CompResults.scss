@@ -71,6 +71,8 @@
 
     &:hover{
         background-color: #fdfffc;
+        box-shadow: 5px 10px 8px rgb(44, 43, 43);
+        cursor: pointer;
     }
 }
 .Edit-btn{
@@ -86,6 +88,8 @@
 
     &:hover{
         background-color: rgb(145, 255, 0);
+        box-shadow: 5px 10px 8px rgb(44, 43, 43);
+        cursor: pointer;
     }
 }
 .Delete-btn{
@@ -101,6 +105,8 @@
 
     &:hover{
         background-color: pink;
+        box-shadow: 5px 10px 8px rgb(44, 43, 43);
+        cursor: pointer;
     }
 }
 .date-form{
