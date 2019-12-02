@@ -1,36 +1,39 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
-require('dotenv').config();
+var express = require('express');
+var app = express();
+var bodyParser = require('body-parser');
+var mysql = require('mysql');
 const items = require('./routes/api/items');
 
-const app = express();
-
 app.use(bodyParser.json());
-
-const mongoDBRoute = process.env.DATA_BASE_ROUTE;
-
-mongoose.connect(process.env.MONGODB_URI || mongoDBRoute, { useNewUrlParser: true, useUnifiedTopology: true});
-
-let db = mongoose.connection;
-
-db.once('open', ()=> console.log('Connected to the database'));
-
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+  
+  
+// default route
+app.get('/', function (req, res) {
+    return res.send({ error: true, message: 'hello' })
+});
+// connection configurations
+var db = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: 'mathew',
+    database: 'sunview'
+});
+  
+// connect to database
+db.connect(function(err) {
+  if (err) {
+    console.error('error connecting: ' + err.stack);
+    return;
+  }
+ const port =  4000;
+  app.listen(port, '127.0.0.1', ()=>{console.log('Connected to the database')});
+});
 
 app.use('/api', items);
 
-if (process.env.NODE_ENV === 'production') {
-    // Exprees will serve up production assets
-    app.use(express.static('client/build'));
+const port =  5000;
 
-    // Express serve up index.html file if it doesn't recognize route
-    const path = require('path');
-    app.get('*', (req, res) => {
-        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-    });
-}
-
-const port = process.env.PORT || 5000;
-
-app.listen(port, '0.0.0.0', ()=>{console.log(`Server started running on port: ${port}`)});
+app.listen(port, '127.0.0.1', ()=>{console.log(`Server started running on port: ${port}`)});

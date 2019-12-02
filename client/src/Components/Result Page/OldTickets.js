@@ -5,11 +5,13 @@ export default function OldTickets(props) {
 
     const ticketData = Object.values(props.theTicket);
     const ticketFields = Object.keys(props.theTicket);
-    ticketFields.shift();
-    ticketData.shift();
+    //ticketFields.shift();
+    //ticketData.shift();
     const completeTicket = ticketFields.map((item, i) => (
+		
         <TicketField key={i} title={item} datas={ticketData[i]} show={true} />
     ))
+	console.log(completeTicket);
     return (
         <div className="Ticket">
             {completeTicket}
