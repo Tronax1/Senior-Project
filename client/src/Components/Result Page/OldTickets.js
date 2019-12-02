@@ -11,7 +11,6 @@ export default function OldTickets(props) {
 		
         <TicketField key={i} title={item} datas={ticketData[i]} show={true} />
     ))
-	console.log(completeTicket);
     return (
         <div className="Ticket">
             {completeTicket}

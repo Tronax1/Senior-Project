@@ -86,7 +86,6 @@ router.get('/previousScores', async (req, res)=>{
         ticketOne,
         ticketTwo
 		]
-		console.log(selectedTickets);
 		res.json(selectedTickets);
 	});
 })
