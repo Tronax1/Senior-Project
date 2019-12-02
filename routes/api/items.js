@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const router = express.Router();
 const { Parser } = require('json2csv');
@@ -12,10 +13,10 @@ const Result = require('../../Model/LikertSchema');
 
 // connection configurations
 var dbConn = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'mathew',
-    database: 'sunview'
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_NAME,
 });
   
 // connect to database

@@ -1,3 +1,4 @@
+require('dotenv').config();
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
@@ -16,10 +17,10 @@ app.get('/', function (req, res) {
 });
 // connection configurations
 var db = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'mathew',
-    database: 'sunview'
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_NAME,
 });
   
 // connect to database
