@@ -5,118 +5,156 @@ const { Parser } = require('json2csv');
 const fs = require('fs')
 const path = require('path');
 var mysql = require('mysql');
-const fields = ['ID1', 'ID2', 'user', 'result', 'date'];
+const fields = ['ID1', 'ID2', 'grader', 'result', 'date'];
 const opts = {fields};
-
+const sql = require('mssql')
 const Ticket = require('../../Model/TicketSchema');
 const Result = require('../../Model/LikertSchema');
+const { poolPromise } = require('../../db')
 
-// connection configurations
-var dbConn = mysql.createConnection({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASS,
-    database: process.env.DB_NAME,
-});
-  
-// connect to database
-dbConn.connect(); 
 
 //gets the tickets from the database for ticket comparison page
 //you need to change table_name to your database name or put it in as a variable somewhere
-router.get('/tickets', async (req, res) =>{
-    dbConn.query('SELECT * FROM tickets ORDER BY RAND() LIMIT 2', function (error, results, fields) {
-    if (error) throw error;
-	const item1 = results[0]
-	const item2 = results[1]
+router.get('/tickets', async (req, res) =>{ 
+	try {
+    const pool = await poolPromise
+    const result = await pool.request()
+        .query('select TOP 2 * from tickets ORDER BY NEWID()')      
+	const item1 = result.recordset[0]
+	const item2 = result.recordset[1]
     const tickets = [
         item1,
         item2
     ];
     res.json(tickets); 
-	});
+	} catch (err) {
+		res.status(500)
+		res.send(err.message)
+	}
 })
 
 //gets values from results database
 router.get('/scores', async (req, res) =>{
-	dbConn.query('SELECT * FROM results where user=?', req.query.user, function (error, results, fields) {
-		if (error) throw error;
-		res.json(results);
-	});
+	try {
+    const pool = await poolPromise
+    const result = await pool.request()
+		.input('input_parameter', req.query.user)
+        .query('select * from results WHERE grader=@input_parameter')    
+    res.json(result.recordset)
+	} catch (err) {
+		res.status(500)
+		console.log("error: "+err.message)
+	}
 })
 
 router.get('/exportCSV', async (req, res) =>{
-    const startDate = new Date(req.query.dateOne);
-    const endDate = new Date(req.query.dateTwo);
+    const startDate = req.query.dateOne+"T00:00:00.0Z";
+    const endDate = req.query.dateTwo+"T24:59:59.9Z";;
     let selector = ""
     selector += req.query.select
-
-    if(selector === "Current"){ //for current user
-		dbConn.query('SELECT * FROM results where user=? date BETWEEN ? AND  ?', [req.query.user,startDate,endDate], function (error, results, fields) {
-			if (error) throw error;
+	var download_directory="../../";//set your output directory here. 
+	var str= 'SELECT * FROM results where grader=\''+req.query.user+'\' and date BETWEEN \''+startDate+'\' AND  \''+endDate+'\'';
+	try {
+		const pool = await poolPromise
+		if(selector === "Current"){
+			const result = await pool.request()
+				.query('SELECT * FROM results where grader=\''+req.query.user+'\' and date BETWEEN \''+startDate+'\' AND  \''+endDate+'\'')
+			var file_name=req.query.user+"_"+req.query.dateOne.replace(/-/g,'_')+"_"+req.query.dateTwo.replace(/-/g,'_')+".csv";
 			const parser = new Parser(opts);
-			const csv = parser.parse(results);
-			res.json(results);
-			fs.writeFileSync('data.csv', csv);
-			res.download(path.join(__dirname, '../../', 'data.csv'));
-		});
-    }
-    if(selector === "All"){//for all users
-        dbConn.query('SELECT * FROM results where user=? date BETWEEN ? AND  ?', [req.query.user,startDate,endDate], function (error, results, fields) {
-			if (error) throw error;
+			const csv = parser.parse(result.recordset);
+			fs.writeFileSync(file_name, csv);
+			var p1=path.join(__dirname, download_directory, file_name)
+			res.download(p1); 
+			var download_location=p1.toString()
+			
+		}
+		if(selector === "All"){
+			const result = await pool.request()
+				.query('SELECT * FROM results where date BETWEEN \''+startDate+'\' AND  \''+endDate+'\'')
+			var file_name="AllGraders_"+req.query.dateOne.replace(/-/g,'_')+"_"+req.query.dateTwo.replace(/-/g,'_')+".csv";
 			const parser = new Parser(opts);
-			const csv = parser.parse(results);
-			res.json(results);
-			fs.writeFileSync('data.csv', csv);
-			res.download(path.join(__dirname, '../../', 'data.csv'));
-		});
-    }
+			const csv = parser.parse(result.recordset);
+			fs.writeFileSync(file_name, csv);
+			var p1=path.join(__dirname, download_directory, file_name)
+			res.download(p1); 
+			var download_location=p1.toString()
+			
+		}
+	} catch (err) {
+		res.status(500)
+		console.log("ERROR: "+err.message)
+		res.send("File Not Downloaded: "+err.message);
+	}
+	res.send("File downloaded to: "+download_location);
 })
 
 //selects previous tickets to rescore when editing
 router.get('/previousScores', async (req, res)=>{
 	var selected = req.query.selected.replace(/^\s+|\s+$/g, '');
 	selected = selected.replace(/\s/g, ',');
-	dbConn.query('SELECT '+selected+' FROM tickets where ItemID=? or ItemID=?', [req.query.OID1,req.query.OID2], function (error, results, fields) {
-		if (error) throw error;
-		results[0].constructor.name='';
-		results[1].constructor.name='';
-		const ticketOne = results[0]//JSON.parse(JSON.stringify(results[0]))
-		const ticketTwo = results[1]//JSON.parse(JSON.stringify(results[1]))
-		const selectedTickets = [
-        ticketOne,
-        ticketTwo
-		]
-		res.json(selectedTickets);
-	});
+		try {
+    const pool = await poolPromise
+    const result = await pool.request()
+        .query('select '+ selected +' from tickets WHERE ItemID=\''+req.query.OID1+'\' or ItemID=\''+req.query.OID2+'\'')    
+	const ticketOne = result.recordset[0]
+	const ticketTwo = result.recordset[1]
+	const selectedTickets = [
+			ticketOne,
+			ticketTwo
+			]
+	res.json(selectedTickets)
+	} catch (err) {
+		res.status(500)
+		console.log("error: "+err.message)
+	}
 })
 
 //returns number of comparisons for a grader
 router.get('/results/total', async (req, res) =>{
-	dbConn.query('SELECT COUNT(*) FROM results where user=?', req.query.user, function (error, results, fields) {
-		res.json(results.length);
-	});
+	try {
+    const pool = await poolPromise
+    const result = await pool.request()
+		.input('input_parameter', req.query.user)
+        .query('select * from results WHERE grader=@input_parameter') 		
+    res.json(result.recordsets[0].length)
+	} catch (err) {
+		res.status(500)
+		console.log(err.message)
+	}
 })
 
 //adds results to results database or table
 router.post('/results', async (req, res) =>{
 	var current_date=(new Date()).toISOString()
-	dbConn.query("INSERT INTO results SET ? ", {
-		_id: req.body.ID1+'-'+req.body.ID2+current_date,
-		ID1: req.body.ID1,
-        ID2: req.body.ID2,
-        user: req.body.user,
-        result: req.body.result,
-		date:current_date,
-        selectedFields: req.body.selectedFields }, function (error, results, fields) {
-			res.json(results);
-	});
+	try {
+	var id=req.body.ID1+'-'+req.body.ID2+current_date
+    const pool = await poolPromise
+	var value = req.query.user;
+	var query = 'INSERT INTO results'+
+		' VALUES (\''+id+'\', \''+ req.body.ID1+'\', \''+ req.body.ID2+
+		'\', \''+ req.body.user+
+		'\', \''+ req.body.result+
+		'\', \''+ current_date+
+		'\', \''+ req.body.selectedFields+'\')'
+    const result = await pool.request()
+        .query(query)      
+    res.json(result)
+	} catch (err) {
+		res.status(500)
+		console.log(err.message)
+	}
 })
 
 router.delete('/results/delete/:id', async (req, res)=>{   
-	dbConn.query('DELETE FROM results WHERE _id = ?', [req.params.id], function (error, results, fields) {
-        if (error) throw error;
-        res.send("ok");
-    });
+	try {
+    const pool = await poolPromise
+    const result = await pool.request()
+		.input('input_parameter', req.params.id)
+        .query('DELETE FROM results WHERE _id=@input_parameter') 		
+    res.send("ok");
+	} catch (err) {
+		res.status(500)
+		console.log(err.message)
+	}
 })
 module.exports = router;

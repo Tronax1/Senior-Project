@@ -77,7 +77,7 @@ class CompResults extends Component {
                                 </div>
                                 {this.props.comparisons.data.map((items, i) => (
                                     <Comparisons key={i} OID1={items.ID1} OID2={items.ID2}
-                                        User={items.user} Result={items.result} time={items.date}
+                                        User={items.grader} Result={items.result} time={items.date}
                                         modalShow={this.showModal} previousFields={items.selectedFields}
                                         fetchPrev={this.props.fetchPreviousSelected} deleteId={items._id}
                                         deleteEntry={this.props.deleteResult}/>
