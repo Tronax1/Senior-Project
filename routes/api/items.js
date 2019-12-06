@@ -1,4 +1,3 @@
-require('dotenv').config();
 const express = require('express');
 const router = express.Router();
 const { Parser } = require('json2csv');
@@ -18,7 +17,7 @@ router.get('/tickets', async (req, res) =>{
 	try {
     const pool = await poolPromise
     const result = await pool.request()
-        .query('SELECT TOP 2 * FROM tickets')      
+        .query('SELECT TOP 2 * FROM tickets ORDER BY NEWID()')      
 	const item1 = result.recordset[0]
 	const item2 = result.recordset[1]
     const tickets = [

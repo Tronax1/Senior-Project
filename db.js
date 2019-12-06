@@ -1,19 +1,19 @@
-
+require('dotenv').config();
 	
 var config = {  
-	server: 'LAPTOP-V14PSSVE',  //update me
-	port: 1433,
+	server: process.env.DB_SERVER,  //update me
+	port: process.env.DB_PORT.toINT,
 	authentication: {
 		type: 'default',
 		options: {
-			userName: 'root', //update me
-			password: 'mathew'  //update me
+			userName: process.env.DB_USER, //update me
+			password: process.env.DB_PASS  //update me
 		}
 	},
 	options: {
 	   // If you are on Microsoft Azure, you need encryption:
 		encrypt: true,
-		database: 'sunview'  //update me
+		database: process.env.DB_NAME  //update me
 	}
 };  
 	

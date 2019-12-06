@@ -1,4 +1,3 @@
-require('dotenv').config();
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
@@ -22,7 +21,7 @@ app.use('/api', items);
 
 const port =  5000;
 
-const server = app.listen(process.env.PORT || 5000, () => {
+const server = app.listen(port, () => {
   const host = server.address().address
   const port = server.address().port
 
