@@ -14,12 +14,11 @@ const { poolPromise } = require('../../db')
 
 
 //gets the tickets from the database for ticket comparison page
-//you need to change table_name to your database name or put it in as a variable somewhere
 router.get('/tickets', async (req, res) =>{ 
 	try {
     const pool = await poolPromise
     const result = await pool.request()
-        .query('select TOP 2 * from tickets ORDER BY NEWID()')      
+        .query('SELECT TOP 2 * FROM tickets')      
 	const item1 = result.recordset[0]
 	const item2 = result.recordset[1]
     const tickets = [
@@ -39,7 +38,7 @@ router.get('/scores', async (req, res) =>{
     const pool = await poolPromise
     const result = await pool.request()
 		.input('input_parameter', req.query.user)
-        .query('select * from results WHERE grader=@input_parameter')    
+        .query('SELECT * FROM results WHERE grader=@input_parameter ORDER BY date DESC')    
     res.json(result.recordset)
 	} catch (err) {
 		res.status(500)
@@ -58,7 +57,7 @@ router.get('/exportCSV', async (req, res) =>{
 		const pool = await poolPromise
 		if(selector === "Current"){
 			const result = await pool.request()
-				.query('SELECT * FROM results where grader=\''+req.query.user+'\' and date BETWEEN \''+startDate+'\' AND  \''+endDate+'\'')
+				.query('SELECT * FROM results WHERE grader=\''+req.query.user+'\' AND date BETWEEN \''+startDate+'\' AND  \''+endDate+'\'')
 			var file_name=req.query.user+"_"+req.query.dateOne.replace(/-/g,'_')+"_"+req.query.dateTwo.replace(/-/g,'_')+".csv";
 			const parser = new Parser(opts);
 			const csv = parser.parse(result.recordset);
@@ -70,7 +69,7 @@ router.get('/exportCSV', async (req, res) =>{
 		}
 		if(selector === "All"){
 			const result = await pool.request()
-				.query('SELECT * FROM results where date BETWEEN \''+startDate+'\' AND  \''+endDate+'\'')
+				.query('SELECT * FROM results WHERE date BETWEEN \''+startDate+'\' AND  \''+endDate+'\'')
 			var file_name="AllGraders_"+req.query.dateOne.replace(/-/g,'_')+"_"+req.query.dateTwo.replace(/-/g,'_')+".csv";
 			const parser = new Parser(opts);
 			const csv = parser.parse(result.recordset);
@@ -95,7 +94,7 @@ router.get('/previousScores', async (req, res)=>{
 		try {
     const pool = await poolPromise
     const result = await pool.request()
-        .query('select '+ selected +' from tickets WHERE ItemID=\''+req.query.OID1+'\' or ItemID=\''+req.query.OID2+'\'')    
+        .query('SELECT '+ selected +' FROM tickets WHERE ItemID=\''+req.query.OID1+'\' or ItemID=\''+req.query.OID2+'\'')    
 	const ticketOne = result.recordset[0]
 	const ticketTwo = result.recordset[1]
 	const selectedTickets = [
@@ -115,7 +114,7 @@ router.get('/results/total', async (req, res) =>{
     const pool = await poolPromise
     const result = await pool.request()
 		.input('input_parameter', req.query.user)
-        .query('select * from results WHERE grader=@input_parameter') 		
+        .query('SELECT * FROM results WHERE grader=@input_parameter') 		
     res.json(result.recordsets[0].length)
 	} catch (err) {
 		res.status(500)
@@ -123,7 +122,7 @@ router.get('/results/total', async (req, res) =>{
 	}
 })
 
-//adds results to results database or table
+//adds results to results table
 router.post('/results', async (req, res) =>{
 	var current_date=(new Date()).toISOString()
 	try {
